@@ -2,3 +2,84 @@
 // Islandora Styling
 ////////////////////////
 
+// Simple Search //
+#islandora-solr-simple-search-form {
+	input.form-submit {
+		background: url(../images/barnard/search_btn.png) no-repeat;
+		border: 0 none;
+		text-indent: -9999px;
+		height: 26px;
+		width: 26px;
+		float: right;
+		margin-top: -27px;
+		margin-right: 3px;
+		opacity: 0.5;
+		transition: all 0.3s ease 0s;
+	}
+	input.form-submit:hover {
+		opacity: 1;
+	}
+	input.form-text {
+		width: 100%;
+	}
+}
+
+// Advanced Search //
+#block-islandora-solr-advanced {
+	margin: 0;
+	#islandora-solr-advanced-terms {
+		width: 70%;
+		display: inline;
+		.form-type-textfield {
+			width: 38%;
+			margin-right: 0;
+		}
+		.form-text {
+			width: 100%;
+			line-height: 1.6em;
+		}
+		.form-type-select {
+			margin: 0.5em 0 0 0;
+		}
+	}
+	.islandora-solr-advanced-controls {
+		margin-top: 10px;
+		margin: 0.5em 0 3em 0;
+		.form-submit {
+			width: 7em;
+		}
+	}
+}
+
+// Frontpage Panel
+
+.frontpage-panel {
+	background: #99ccff;
+	width: 500px;
+	padding: 10px 15px;
+	border-radius: 10px;
+	opacity: 0.9;
+	position: relative;
+	top: 5em; left: 5em;
+	ul.links li {
+		display: inline;
+		margin: 0 0.5em;
+	}
+	p {
+		text-align: center;
+	}
+}
+
+// Frontpage Featured
+
+#block-views-featured-block {
+	background: white;
+	width: 300px;
+	float: right;
+	padding: 10px 15px;
+	position: relative;
+	top: -65px; right: 45px;
+	border-radius: 10px;
+	opacity: 0.8;
+	font-size: 80%;
+}
