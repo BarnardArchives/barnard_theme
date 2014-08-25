@@ -24,31 +24,10 @@
 	}
 }
 
-// Advanced Search //
-#block-islandora-solr-advanced {
-	margin: 0;
-	#islandora-solr-advanced-terms {
-		width: 70%;
-		display: inline;
-		.form-type-textfield {
-			width: 38%;
-			margin-right: 0;
-		}
-		.form-text {
-			width: 100%;
-			line-height: 1.6em;
-		}
-		.form-type-select {
-			margin: 0.5em 0 0 0;
-		}
-	}
-	.islandora-solr-advanced-controls {
-		margin-top: 10px;
-		margin: 0.5em 0 3em 0;
-		.form-submit {
-			width: 7em;
-		}
-	}
+// Not Front Simple Search //
+
+.not-front #block-islandora-solr-simple {
+	float: right;
 }
 
 // Frontpage Panel
@@ -82,4 +61,71 @@
 	border-radius: 10px;
 	opacity: 0.8;
 	font-size: 80%;
+}
+
+// Sort and Display Switch
+
+#block-islandora-solr-sort, #block-islandora-solr-current-query {
+  height: 2em;
+  margin: 0;
+  h2 {
+  	color: #767777;
+	float: left;
+	font-size: 135%;
+	line-height: 1.3em;
+	margin-right: 0.25em;
+  }
+  ul {
+  	list-style: none outside none;
+	margin-bottom: 0;
+	li {
+		display: inline;
+		padding: 0 0.25em;
+		a.active {
+			text-decoration: underline;
+		}
+	}
+  }
+}
+
+#block-islandora-solr-display-switch {
+  float: right;
+  position: relative;
+  top: -46px;
+  li {
+  	float: left;
+  	list-style: none;
+  	a {
+  		display: inline-block;
+		padding: 0 2px;
+  	}
+  }
+}
+
+
+// Sidebar Stuff
+
+.sidebars {
+	h2, h3 {
+		font-size: 95%;
+	}
+	h3 {
+		font-weight: normal;
+	}
+	ul {
+		padding: 0 0 0 1em;
+	}
+}
+
+#block-islandora-solr-advanced, #block-islandora-solr-basic-facets, #block-menu-menu-collections {
+	background: #99CCFF;
+	border-radius: 7px;
+	padding: 10px;
+}
+
+// Advanced Search //
+#block-islandora-solr-advanced {
+	.form-item {
+		margin: 0;
+	}
 }

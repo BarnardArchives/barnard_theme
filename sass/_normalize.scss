@@ -105,9 +105,9 @@ audio:not([controls]) {
  */
 html {
   font-family: $base-font-family; /* 1 */
-  font-size: 100% * ($base-font-size / 16px); /* 3 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  font-size: 85% * ($base-font-size / 16px); /* 3 */
+  -ms-text-size-adjust: 85%; /* 2 */
+  -webkit-text-size-adjust: 85%; /* 2 */
   // Establish a vertical rhythm unit using $base-line-height.
   @include adjust-leading-to(1);
 }
@@ -134,11 +134,17 @@ body {
  * The order of link states are based on Eric Meyer's article:
  * http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
  */
-a:link {
+.front a:link {
   color: white;
 }
-a:visited {
+.front a:visited {
   color: white;
+}
+a:link {
+  color: black;
+}
+a:visited {
+  color: black;
 }
 a:hover,
 a:focus {
