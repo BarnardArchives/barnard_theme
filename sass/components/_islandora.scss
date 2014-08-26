@@ -8,19 +8,24 @@
 		background: url(../images/barnard/search_btn.png) no-repeat;
 		border: 0 none;
 		text-indent: -9999px;
-		height: 26px;
-		width: 26px;
+		height: 30px;
+		width: 30px;
 		float: right;
-		margin-top: -27px;
-		margin-right: 3px;
-		opacity: 0.5;
+		position: relative;
+		top: -35px; right: 5px;
+		z-index: 50;
 		transition: all 0.3s ease 0s;
+		opacity: 1;
 	}
 	input.form-submit:hover {
-		opacity: 1;
+		opacity: 0.7;
 	}
 	input.form-text {
 		width: 100%;
+		height: 2.25em;
+		border-radius: 7px;
+		border: 1px solid #ccc;
+		padding: 0 10px;
 	}
 }
 
@@ -34,18 +39,33 @@
 
 .frontpage-panel {
 	background: #99ccff;
-	width: 500px;
+	width: 425px;
 	padding: 10px 15px;
 	border-radius: 10px;
 	opacity: 0.9;
 	position: relative;
 	top: 5em; left: 5em;
-	ul.links li {
-		display: inline;
-		margin: 0 0.5em;
+	text-align: center;
+	//
+	font-size: 135%;
+	font-weight: bold;
+	color: white;
+	line-height: 1.4em;
+	h1 {
+		letter-spacing: 0.5pt;
+		margin: 0.25em 0;
 	}
 	p {
-		text-align: center;
+		max-width: 75%;
+		margin: 0 auto 1em;
+	}
+	ul.links {		
+		margin: 0;
+		padding: 0.5em 1.25em 1em; 
+		li {
+			display: inline;
+			padding: 0 0.25em;
+		}
 	}
 }
 
@@ -60,7 +80,6 @@
 	top: -65px; right: 45px;
 	border-radius: 10px;
 	opacity: 0.8;
-	font-size: 80%;
 }
 
 // Sort and Display Switch
@@ -69,11 +88,11 @@
   height: 2em;
   margin: 0;
   h2 {
-  	color: #767777;
 	float: left;
-	font-size: 135%;
-	line-height: 1.3em;
+	font-size: 100%;
 	margin-right: 0.25em;
+	font-weight: normal;
+	line-height: 1.7em;
   }
   ul {
   	list-style: none outside none;
@@ -106,15 +125,25 @@
 // Sidebar Stuff
 
 .sidebars {
-	h2, h3 {
+	h2 {
+		text-transform: uppercase;
 		font-size: 95%;
 	}
 	h3 {
 		font-weight: normal;
+		font-size: 95%;
+		margin: 1em 0 0.25em;
 	}
 	ul {
 		padding: 0 0 0 1em;
+		margin: 0.5em 0 1.5em;
 	}
+	a.soft-limit {
+		font-size: 85%;
+		position: relative;
+		top: -1em;
+	}
+
 }
 
 #block-islandora-solr-advanced, #block-islandora-solr-basic-facets, #block-menu-menu-collections {
@@ -128,4 +157,34 @@
 	.form-item {
 		margin: 0;
 	}
+	.islandora-solr-advanced-controls {
+		margin-top: 0.5em;
+	}
+}
+
+// Search page Results, Object Pages, Etc.
+
+.islandora-solr-search-results  {
+	.islandora-solr-search-result {
+		margin-bottom: 2em;
+		dl.solr-fields, .solr-fields dt, .solr-fields dd {
+			border: 0 none;
+		}
+	}
+}
+
+div.results {
+	display: none;
+	span {
+		margin-right: 1.5em;
+	}
+	.breadcrumb {
+		display: inline-block;
+	}
+}
+body.page-islandora-search div.results {
+	display: block;
+}
+body.page-islandora-search-- div.results {
+	//display: none;
 }

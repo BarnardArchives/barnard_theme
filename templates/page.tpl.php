@@ -40,7 +40,6 @@
 
     <div id="content" class="column" role="main">
       <?php print render($page['highlighted']); ?>
-      <?php print $breadcrumb; ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
@@ -53,6 +52,7 @@
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
+      <div class="results"><span class="results-for"><?php print t('Results for'); ?></span><?php print $breadcrumb; ?></div>
       <?php print render($page['content']); ?>
       <?php print $feed_icons; ?>
     </div>

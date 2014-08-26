@@ -96,6 +96,9 @@ audio:not([controls]) {
 }
 */
 
+// Google Fonts API
+@import url(//fonts.googleapis.com/css?family=Oswald:400,700|Open+Sans:400italic,400,600);
+
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
@@ -190,6 +193,7 @@ blockquote {
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
 h1 {
+  font-family: Oswald;
   /* Set the font-size and line-height while keeping a proper vertical rhythm. */
   @include adjust-font-size-to( $h1-font-size );
 
