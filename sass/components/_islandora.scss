@@ -31,9 +31,18 @@
 
 // Not Front Simple Search //
 
-.not-front #block-islandora-solr-simple {
-	float: right;
+.not-front {
+	#block-islandora-solr-simple {
+		float: right;
+		position: relative;
+		top: -2.22em;
+		width: 18em;
+		input.form-text {
+			height: 2.8em;
+		}
+	}
 }
+
 
 // Frontpage Panel
 

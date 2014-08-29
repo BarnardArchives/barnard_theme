@@ -1828,12 +1828,19 @@ tr.selected td {
   padding: 0 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000335}}
 .not-front #block-islandora-solr-simple {
   float: right;
+  position: relative;
+  top: -2.22em;
+  width: 18em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000340}}
+.not-front #block-islandora-solr-simple input.form-text {
+  height: 2.8em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000349}}
 .frontpage-panel {
   background: #99ccff;
   width: 425px;
@@ -1849,28 +1856,28 @@ tr.selected td {
   color: white;
   line-height: 1.4em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000363}}
 .frontpage-panel h1 {
   letter-spacing: 0.5pt;
   margin: 0.25em 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000367}}
 .frontpage-panel p {
   max-width: 75%;
   margin: 0 auto 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000371}}
 .frontpage-panel ul.links {
   margin: 0;
   padding: 0.5em 1.25em 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000374}}
 .frontpage-panel ul.links li {
   display: inline;
   padding: 0 0.25em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000374}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000383}}
 #block-views-featured-block {
   background: white;
   width: 300px;
@@ -1883,12 +1890,12 @@ tr.selected td {
   opacity: 0.8;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000396}}
 #block-islandora-solr-sort, #block-islandora-solr-current-query {
   height: 2em;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000390}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000399}}
 #block-islandora-solr-sort h2, #block-islandora-solr-current-query h2 {
   float: left;
   font-size: 100%;
@@ -1896,100 +1903,100 @@ tr.selected td {
   font-weight: normal;
   line-height: 1.7em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003106}}
 #block-islandora-solr-sort ul, #block-islandora-solr-current-query ul {
   list-style: none outside none;
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003100}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003109}}
 #block-islandora-solr-sort ul li, #block-islandora-solr-current-query ul li {
   display: inline;
   padding: 0 0.25em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003103}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003112}}
 #block-islandora-solr-sort ul li a.active, #block-islandora-solr-current-query ul li a.active {
   text-decoration: underline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003110}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003119}}
 #block-islandora-solr-display-switch {
   float: right;
   position: relative;
   top: -46px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003114}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003123}}
 #block-islandora-solr-display-switch li {
   float: left;
   list-style: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003117}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003126}}
 #block-islandora-solr-display-switch li a {
   display: inline-block;
   padding: 0 2px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003128}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003137}}
 .sidebars h2 {
   text-transform: uppercase;
   font-size: 95%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003132}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003141}}
 .sidebars h3 {
   font-weight: normal;
   font-size: 95%;
   margin: 1em 0 0.25em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003137}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003146}}
 .sidebars ul {
   padding: 0 0 0 1em;
   margin: 0.5em 0 1.5em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003141}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003150}}
 .sidebars a.soft-limit {
   font-size: 85%;
   position: relative;
   top: -1em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003149}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003158}}
 #block-islandora-solr-advanced, #block-islandora-solr-basic-facets, #block-menu-menu-collections {
   background: #99CCFF;
   border-radius: 7px;
   padding: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003157}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003166}}
 #block-islandora-solr-advanced .form-item {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003160}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003169}}
 #block-islandora-solr-advanced .islandora-solr-advanced-controls {
   margin-top: 0.5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003168}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003177}}
 .islandora-solr-search-results .islandora-solr-search-result {
   margin-bottom: 2em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003170}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003179}}
 .islandora-solr-search-results .islandora-solr-search-result dl.solr-fields, .islandora-solr-search-results .islandora-solr-search-result .solr-fields dt, .islandora-solr-search-results .islandora-solr-search-result .solr-fields dd {
   border: 0 none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003176}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003185}}
 div.results {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003178}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003187}}
 div.results span {
   margin-right: 1.5em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003181}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003190}}
 div.results .breadcrumb {
   display: inline-block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003185}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003194}}
 body.page-islandora-search div.results {
   display: block;
 }
