@@ -2,13 +2,43 @@
 // Pages Styling
 ////////////////////////
 
+html { 
+}
+
+body.front {
+	background: url(../images/barnard/barnard-back-1.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
 #header, #footer {
 	background: black;
+	height: 45px;
 	width: 100%;
 	position: absolute;
 	left: 0; right: 0;
+	z-index: 50;
+}
+.not-front #footer {
+	position: absolute !important;
+}
+
+#footer {
 	a {
 		text-transform: uppercase;
 		text-decoration: none;
+		font-size: 90%;
+		letter-spacing: 0.5pt;
+		line-height: 4em;
 	}
+	a:link, a:visited {
+		color: white;
+	}
+}
+
+#name-and-slogan, #main-menu {
+	float: left;
+	clear: left;
 }

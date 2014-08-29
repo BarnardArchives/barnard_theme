@@ -27,6 +27,7 @@
  * HTML5 display definitions
  */
 /* Correct `block` display not defined in IE 8/9. */
+@import url(//fonts.googleapis.com/css?family=Oswald:400,700|Open+Sans:400italic,400,600);
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\0000323}}
 article,
 aside,
@@ -109,21 +110,21 @@ audio:not([controls]) {
  * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
  *    `em` units.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003106}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003109}}
 html {
-  font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-family: Open Sans, Verdana, Tahoma, "DejaVu Sans", sans-serif;
   /* 1 */
-  font-size: 100%;
+  font-size: 85%;
   /* 3 */
-  -ms-text-size-adjust: 100%;
+  -ms-text-size-adjust: 85%;
   /* 2 */
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 85%;
   /* 2 */
   line-height: 1.5em;
 }
 
 /* Remove default margin. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003126}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003129}}
 body {
   margin: 0;
   padding: 0;
@@ -135,35 +136,45 @@ body {
  * The order of link states are based on Eric Meyer's article:
  * http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003137}}
-a:link {
-  color: white;
-}
-
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003140}}
-a:visited {
+.front a:link {
   color: white;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003143}}
+.front a:visited {
+  color: white;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003146}}
+a:link {
+  color: black;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003149}}
+a:visited {
+  color: black;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003152}}
 a:hover,
 a:focus {
   color: #4d4d4d;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003147}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003156}}
 a:active {
   color: #4d4d4d;
 }
 
 /* Address `outline` inconsistency between Chrome and other browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003152}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003161}}
 a:focus {
   outline: thin dotted;
 }
 
 /* Improve readability when focused and also mouse hovered in all browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003157}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003166}}
 a:active,
 a:hover {
   outline: 0;
@@ -179,13 +190,13 @@ a:hover {
  * For more information, see http://24ways.org/2006/compose-to-a-vertical-rhythm
  */
 /* Set 1 unit of vertical rhythm on the top and bottom margin. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003173}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003182}}
 p,
 pre {
   margin: 1.5em 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003177}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003186}}
 blockquote {
   /* Also indent the quote on both sides. */
   margin: 1.5em 30px;
@@ -195,8 +206,9 @@ blockquote {
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003186}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003195}}
 h1 {
+  font-family: Oswald;
   /* Set the font-size and line-height while keeping a proper vertical rhythm. */
   font-size: 2em;
   line-height: 1.5em;
@@ -205,7 +217,7 @@ h1 {
   margin-bottom: 0.75em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003194}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003204}}
 h2 {
   font-size: 1.5em;
   line-height: 2em;
@@ -213,7 +225,7 @@ h2 {
   margin-bottom: 1em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003199}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003209}}
 h3 {
   font-size: 1.17em;
   line-height: 1.28205em;
@@ -221,7 +233,7 @@ h3 {
   margin-bottom: 1.28205em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003204}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003214}}
 h4 {
   font-size: 1em;
   line-height: 1.5em;
@@ -229,7 +241,7 @@ h4 {
   margin-bottom: 1.5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003209}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003219}}
 h5 {
   font-size: 0.83em;
   line-height: 1.80723em;
@@ -237,7 +249,7 @@ h5 {
   margin-bottom: 1.80723em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003214}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003224}}
 h6 {
   font-size: 0.67em;
   line-height: 2.23881em;
@@ -246,26 +258,26 @@ h6 {
 }
 
 /* Address styling not present in IE 8/9, Safari 5, and Chrome. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003221}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003231}}
 abbr[title] {
   border-bottom: 1px dotted;
 }
 
 /* Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003226}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003236}}
 b,
 strong {
   font-weight: bold;
 }
 
 /* Address styling not present in Safari 5 and Chrome. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003232}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003242}}
 dfn {
   font-style: italic;
 }
 
 /* Address differences between Firefox and other browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003237}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003247}}
 hr {
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
@@ -277,14 +289,14 @@ hr {
 }
 
 /* Address styling not present in IE 8/9. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003246}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003256}}
 mark {
   background: #ff0;
   color: #000;
 }
 
 /* Correct font family set oddly in Safari 5 and Chrome. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003252}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003262}}
 code,
 kbd,
 pre,
@@ -297,25 +309,25 @@ var {
 }
 
 /* Improve readability of pre-formatted text in all browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003266}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003276}}
 pre {
   white-space: pre-wrap;
 }
 
 /* Set consistent quote types. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003278}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003288}}
 q {
   quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
 /* Address inconsistent and variable font size in all browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003283}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003293}}
 small {
   font-size: 80%;
 }
 
 /* Prevent `sub` and `sup` affecting `line-height` in all browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003288}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003298}}
 sub,
 sup {
   font-size: 75%;
@@ -324,12 +336,12 @@ sup {
   vertical-align: baseline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003295}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003305}}
 sup {
   top: -0.5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003298}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003308}}
 sub {
   bottom: -0.25em;
 }
@@ -337,7 +349,7 @@ sub {
 /**
  * Lists
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003305}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003315}}
 dl,
 menu,
 ol,
@@ -346,7 +358,7 @@ ul {
   margin: 1.5em 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003324}}
 ol ol,
 ol ul,
 ul ol,
@@ -355,13 +367,13 @@ ul ul {
   margin: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003320}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003330}}
 dd {
   margin: 0 0 0 30px;
 }
 
 /* Address paddings set differently in IE 6/7. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003325}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003335}}
 menu,
 ol,
 ul {
@@ -373,7 +385,7 @@ ul {
  *
  * @todo Look into adding responsive embedded video.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003355}}
 img {
   /* Remove border when inside `a` element in IE 8/9. */
   border: 0;
@@ -387,13 +399,13 @@ img {
 }
 
 /* Correct overflow displayed oddly in IE 9. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003366}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003376}}
 svg:not(:root) {
   overflow: hidden;
 }
 
 /* Address margin not present in IE 8/9 and Safari 5. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003381}}
 figure {
   margin: 0;
 }
@@ -402,7 +414,7 @@ figure {
  * Forms
  */
 /* Define consistent border, margin, and padding. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003397}}
 fieldset {
   margin: 0 2px;
   /* Apply borders and padding that keep the vertical rhythm. */
@@ -426,7 +438,7 @@ fieldset {
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  * 3. Correct alignment displayed oddly in IE 6/7.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003402}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003412}}
 legend {
   border: 0;
   /* 1 */
@@ -441,7 +453,7 @@ legend {
  * 4. Improve appearance and consistency with IE 6/7.
  * 5. Keep form elements constrained in their containers.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003417}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003427}}
 button,
 input,
 select,
@@ -464,7 +476,7 @@ textarea {
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003436}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003446}}
 button,
 input {
   line-height: normal;
@@ -476,7 +488,7 @@ input {
  * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
  * Correct `select` style inheritance in Firefox 4+ and Opera.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003447}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003457}}
 button,
 select {
   text-transform: none;
@@ -491,7 +503,7 @@ select {
  * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
  *    Known issue: inner spacing remains in IE 6.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003461}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003471}}
 button,
 html input[type="button"],
 input[type="reset"],
@@ -505,7 +517,7 @@ input[type="submit"] {
 /**
  * Re-set default cursor for disabled elements.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003475}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003485}}
 button[disabled],
 html input[disabled] {
   cursor: default;
@@ -517,7 +529,7 @@ html input[disabled] {
  * 3. Remove excess padding in IE 7.
  *    Known issue: excess padding remains in IE 6.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003486}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003496}}
 input[type="checkbox"],
 input[type="radio"] {
   -moz-box-sizing: border-box;
@@ -533,7 +545,7 @@ input[type="radio"] {
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003501}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003511}}
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -547,14 +559,14 @@ input[type="search"] {
  * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003510}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003520}}
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
 /* Remove inner padding and border in Firefox 4+. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003516}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003526}}
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -565,7 +577,7 @@ input::-moz-focus-inner {
  * 1. Remove default vertical scrollbar in IE 8/9.
  * 2. Improve readability and alignment in all browsers.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003526}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003536}}
 textarea {
   overflow: auto;
   /* 1 */
@@ -574,7 +586,7 @@ textarea {
 }
 
 /* Drupal-style form labels. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003532}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003542}}
 label {
   display: block;
   font-weight: bold;
@@ -583,7 +595,7 @@ label {
 /**
  * Tables
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003540}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/_normalize\.scss}line{font-family:\00003550}}
 table {
   /* Remove most spacing between table cells. */
   border-collapse: collapse;
@@ -658,7 +670,7 @@ table {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/layouts\/_responsive\.scss}line{font-family:\0000360}}
   #main {
     /* Move all the children of #main down to make room. */
-    padding-top: 3em;
+    padding-top: 12em;
     position: relative;
   }
 
@@ -667,7 +679,7 @@ table {
     /* Move the navbar up inside #main's padding. */
     position: absolute;
     top: 0;
-    height: 3em;
+    height: 5.5em;
     width: 100%;
   }
 }
@@ -950,53 +962,49 @@ table {
   float: left;
   margin: 0;
   padding: 0;
+  line-height: 2.35em;
 }
 
 /* Logo image. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\0000389}}
 .header__logo-image {
   vertical-align: bottom;
 }
 
 /* Wrapper for website name and slogan. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\0000393}}
-.header__name-and-slogan {
-  float: left;
-}
-
 /* The name of the website. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\0000398}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\0000399}}
 .header__site-name {
-  margin: 0;
-  font-size: 2em;
-  line-height: 1.5em;
+  margin: 0.35em 0 0;
+  font-size: 1.5em;
+  line-height: 2em;
 }
 
 /* The link around the name of the website. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003105}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003106}}
 .header__site-link:link, .header__site-link:visited {
   color: #000;
   text-decoration: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003111}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003112}}
 .header__site-link:hover, .header__site-link:focus {
   text-decoration: underline;
 }
 
 /* The slogan (or tagline) of a website. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003118}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003119}}
 .header__site-slogan {
   margin: 0;
 }
 
 /* The secondary menu (login, etc.) */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003123}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003124}}
 .header__secondary-menu {
   float: right;
 }
 
 /* Wrapper for any blocks placed in the header region. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003128}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003129}}
 .header__region {
   /* Clear the logo. */
   clear: both;
@@ -1005,24 +1013,26 @@ table {
 /**
  * Navigation bar.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003136}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003137}}
 #navigation {
   /* Sometimes you want to prevent overlapping with main div. */
   /* overflow: hidden; */
+  margin-top: 45px;
+  background: url(../images/barnard/athena-small.png) no-repeat top left #99ccff;
   /* Main menu and secondary menu links and menu block links. */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003140}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003144}}
 #navigation .block {
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003150}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003154}}
 #navigation .links,
 #navigation .menu {
   margin: 0;
   padding: 0;
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003156}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003160}}
 #navigation .links li,
 #navigation .menu li {
   /* A simple method to get navigation links to appear in one line. */
@@ -1031,16 +1041,23 @@ table {
   list-style-type: none;
   list-style-image: none;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003166}}
+#navigation .links li a:link, #navigation .links li a:visited,
+#navigation .menu li a:link,
+#navigation .menu li a:visited {
+  text-decoration: none;
+  font-weight: bold;
+}
 
 /**
  * Breadcrumb navigation.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003170}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003178}}
 .breadcrumb ol {
   margin: 0;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003174}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003182}}
 .breadcrumb li {
   display: inline;
   list-style-type: none;
@@ -1051,7 +1068,7 @@ table {
 /**
  * Titles.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003185}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003193}}
 .page__title,
 .node__title,
 .block__title,
@@ -1065,7 +1082,7 @@ table {
 /**
  * Messages.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003197}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003205}}
 .messages, .messages--status, .messages--warning, .messages--error {
   margin: 1.5em 0;
   padding: 10px 10px 10px 50px;
@@ -1075,50 +1092,50 @@ table {
   border: 1px solid #be7;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003212}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003220}}
 .messages--warning {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACuElEQVRIiWP4//8/Ay0xSYqntTpnT252zqeJBf0Njhsykrz/pyd6/e9vcNpGVQv6q2wlm0qc/r0+IPD/3UG+/61l9v9mdrjIUc2C7hqHUzc3S///eZwBjO9tF/vfWe1wjioWTKixVm8otPn38wQT3IKfxxn/t5Va/utpsNSg2ILWcttrNzdJgQ3+dpQRjEHs+9tE/zeXWt+gyILOamuTqlxrsOtPLub+7+emBsSq/88v5wL7oqHQ9H9nmbkF2RbUF1rev7lJEuziuU3i/90ddcB4UZsoJC62ifyvK7R4QJYFrcUGrmUZ5v9hYb9hosh/bzcDMN42VRgeF9W5hv8bi/XdSbagKtfs2c1NEvCIPbaQ/7+/pwkYn17Ki0hR24T/l2eZPCfJgsZ83dCiNOP/yCnn7iau/8G+5mD8aBsHSoqqyNL9X5erHUm0BcVpRm9ubhZHMoTh/4eDzP/DA23+RwTZ/P96hAlF7t5Wof8FyfpvibKgNk8noyDZ4D9quofg1Bjr/1kJlhjiIF+Upmn/r83RzCJoQXaC3qcbm8SwGMLwvybP/H8jMGlik7u7VeB/Zqz2J7wWVGdr1uTG62J1PQgfWST1/+hiCaxyIF8UJqv9r8hQrcVpQVqkzrcbG0WwGvB2H/P/lnx5MAaxsam5vYn3f2KY+jesFpSlqfZnxWjidP2OGWL/g/0swBjExu4Lhv958Ur/i5KU+lEsCA1lYI4JUv95bZ0gTo2Pt3P+z0myBmMQG5e6mxu4/kf4Kf8EmQm3oCRNebKrvSawIGPBqRG9sMOp5hjjfwdrlf/58bKT4RaUpWvtcLZV/39iscD/H0AFP46jYwYiMeP/44u4/9tbKQODSXUH3II9G7v18hI0n8YGKv+IDVT6joxj/BVx4mgcOCde/SnITPRUJAHEGlTCEkQV19TAAN8FC67hZdFXAAAAAElFTkSuQmCC');
   border-color: #ed5;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003221}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003229}}
 .messages--error {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACpElEQVR42rWWTUgbQRiGQ0Tx4MWDeFM8eBA9iKAoggiCoCiiIiL4L3oQV1CJB0UEf6iRYFpK7UniTw9VSqL2kvQsVDBpSZrtRo35czVNW3oprRf17exSl4yzu1ikAy9h59vvedhkMrMGAGoxknAk2w8MJ/WosXThiZkZt9jdLeglPjn5ATc3mhJNuNjbK0QbG3ExMICL/n6IfX0gcxB7ekDAELu6IHZ2IlJbi1hLS1BLogmPtbUhMTv7oMSamzUlqnByMxLT0/8STQkDj9TV4ZLj5OysrODl8jIu5Gs68dFR7JG6dWkJ0fFx+TpSX89IDMnwcHU1yKec12Yz3rlc4HkeLwjkXJpPip3U3+7vIx6P4ymph4eG5PlwTQ0lMdytlmBxMWKtrXLeT0zA5XTibvj9fjxfXETkb/3N/Dz2dneVuiTZtliU/rPSUsQ5ziuxZYG03IIlJdKKUPJjdRUAKMmzuTnskB/VYbdTtd9HR4g2NCi9Z2VliDY1BSnBaUEBzsrLqXyzWCiQ9HU5HA4afniIUFWV0hOqqMBpURErOM7NxWlhIZOvCwvA7S3Uxq+DA5AnZ3pO8vJYQSArC8c5Oeqx2Rj4udeLQH6+6v2B7GxW8DkjA0JmJpONwUHY7XZGIAgCzCYTeJUewmIFfqMRfEoKlQ2yJbza2oLWcLvdeDI2hk/3+iQWKzAYkJzNjg5srq9TwJ9OJ76YTNScx+ORJT66X1/grKyEbW2NgfPp6XKd/JMZySrHaQsSU1Oe+0/w3WpVgyu5HBlR6lc+H8gioevDwz6JrWwV5+3txyoSFk5DcOX1MnCyJ4Vwfb1zt1UY9SR8aioDpuppaVpwZbPTl+hHF04dOKzk8XBF8DgJC3/woU/W/EciOtELOWi8DDwp//215Q+p7kiKh2lQSAAAAABJRU5ErkJggg==');
   border-color: #ed541d;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003231}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003239}}
 .messages__list {
   margin: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003234}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003242}}
 .messages__item {
   list-style-image: none;
 }
 
 /* Core/module installation error messages. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003239}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003247}}
 .messages--error p.error {
   color: #333;
 }
 
 /* System status report. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003244}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003252}}
 .ok,
 .messages--status {
   background-color: #f8fff0;
   color: #234600;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003249}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003257}}
 .warning,
 .messages--warning {
   background-color: #fffce5;
   color: #840;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003254}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003262}}
 .error,
 .messages--error {
   background-color: #fef5f1;
@@ -1129,7 +1146,7 @@ table {
  * Tabs.
  */
 /* Basic positioning styles shared by primary and secondary tabs. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003265}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003273}}
 .tabs-primary, .tabs-secondary {
   overflow: hidden;
   *zoom: 1;
@@ -1147,14 +1164,14 @@ table {
   white-space: nowrap;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003275}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003283}}
 .tabs-primary__tab, .tabs-primary__tab.is-active, .tabs-secondary__tab,
 .tabs-secondary__tab.is-active {
   float: left;
   margin: 0 3px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003279}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003287}}
 a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active, a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
   border: 1px solid #e9e9e9;
   border-right: 0;
@@ -1165,7 +1182,7 @@ a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active, a.tabs-secondary__
 }
 
 /* Primary tabs. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003292}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003300}}
 .tabs-primary__tab, .tabs-primary__tab.is-active {
   -moz-border-radius-topleft: 4px;
   -webkit-border-top-left-radius: 4px;
@@ -1180,12 +1197,12 @@ a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active, a.tabs-secondary__
   border-bottom: 0 \0/ie;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003301}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003309}}
 .is-active.tabs-primary__tab {
   border-bottom-color: white;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003307}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003315}}
 a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active {
   -moz-border-radius-topleft: 4px;
   -webkit-border-top-left-radius: 4px;
@@ -1204,13 +1221,13 @@ a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active {
   text-align: center;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003325}}
 a.tabs-primary__tab-link:hover, a.tabs-primary__tab-link:focus {
   background-color: #e9e9e9;
   border-color: #f2f2f2;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003329}}
 a.tabs-primary__tab-link:active, a.tabs-primary__tab-link.is-active {
   background-color: transparent;
   *zoom: 1;
@@ -1225,20 +1242,20 @@ a.tabs-primary__tab-link:active, a.tabs-primary__tab-link.is-active {
 }
 
 /* Secondary tabs. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003353}}
 .tabs-secondary {
   font-size: .9em;
   /* Collapse bottom margin of ul.primary. */
   margin-top: -1.5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003359}}
 .tabs-secondary__tab,
 .tabs-secondary__tab.is-active {
   margin: 0.75em 3px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003366}}
 a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
   -moz-border-radius: 0.75em;
   -webkit-border-radius: 0.75em;
@@ -1253,14 +1270,14 @@ a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
   padding: 0 .5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003375}}
 a.tabs-secondary__tab-link:hover, a.tabs-secondary__tab-link:focus {
   background-color: #dedede;
   border-color: #999;
   color: #333;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003380}}
 a.tabs-secondary__tab-link:active, a.tabs-secondary__tab-link.is-active {
   text-shadow: 1px 1px 0 #333333;
   background-color: #666;
@@ -1272,12 +1289,12 @@ a.tabs-secondary__tab-link:active, a.tabs-secondary__tab-link.is-active {
  * Inline styles.
  */
 /* List of links generated by theme_links(). */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003400}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003408}}
 .inline {
   display: inline;
   padding: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003404}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003412}}
 .inline li {
   display: inline;
   list-style-type: none;
@@ -1285,7 +1302,7 @@ a.tabs-secondary__tab-link:active, a.tabs-secondary__tab-link.is-active {
 }
 
 /* The inline field label used by the Fences module. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003412}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003420}}
 span.field-label {
   padding: 0 1em 0 0;
 }
@@ -1293,17 +1310,17 @@ span.field-label {
 /**
  * "More" links.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003419}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003427}}
 .more-link {
   text-align: right;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003422}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003430}}
 .more-help-link {
   text-align: right;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003425}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003433}}
 .more-help-link a {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA7UlEQVR42qWTPQqDQBCFcwSPkCNITpAj5AjeIm1uYpkyR7Cy2Mot7OwsBAsRwUKwmOwLGRle3EIy8PyBfZ/z3J2TiPylz8VWWZZpUB40BonRKyizaxkA88MYYiqCEgv4MTvnZJom0VqWRbz3FlJZgLYtqmEY1Lg9r+sKsIXcLSC3AC019H0vqLquLeC5AfiHYSGkcdAJimKIBQiJ4+CO92OAtm0FNc8zOjkMwE5Q63FAtbeg6zpAYvG8BWR7i5qmQYwY4MIHqYhE2DOPQWcGJBQF2XU72ZzyUeZ5GCNt5/hybJgYdAXsq5sOEE/jG6dC5IOqCXTmAAAAAElFTkSuQmCC');
   background-position: 0 50%;
@@ -1315,14 +1332,14 @@ span.field-label {
  * Pager.
  */
 /* A list of page numbers when more than 1 page of content is available. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003440}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003448}}
 .pager {
   clear: both;
   padding: 0;
   text-align: center;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003445}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003453}}
 .pager-item,
 .pager-first,
 .pager-previous,
@@ -1335,7 +1352,7 @@ span.field-label {
   background-image: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003452}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003460}}
 .pager-item,
 .pager-first,
 .pager-previous,
@@ -1346,7 +1363,7 @@ span.field-label {
 }
 
 /* The current page's list item. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003462}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003470}}
 .pager-current {
   font-weight: bold;
 }
@@ -1355,7 +1372,7 @@ span.field-label {
  * Blocks.
  */
 /* Block wrapper. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003472}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003480}}
 .block {
   margin-bottom: 1.5em;
 }
@@ -1363,26 +1380,26 @@ span.field-label {
 /**
  * Menus.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003479}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003487}}
 .menu__item.is-leaf {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHBAMAAAA2fErgAAAAD1BMVEX///+/v7+Li4sAAADAwMBFvsw8AAAAAXRSTlMAQObYZgAAAB1JREFUCFtjYAADYwMGBmYVZSDhKAwkFJWhYiAAAB2+Aa/9ugeaAAAAAElFTkSuQmCC');
   list-style-type: square;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003486}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003494}}
 .menu__item.is-expanded {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
   list-style-type: circle;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003493}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003501}}
 .menu__item.is-collapsed {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
   list-style-type: disc;
 }
 
 /* The active item in a Drupal menu. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003502}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003510}}
 .menu a.active {
   color: #000;
 }
@@ -1391,7 +1408,7 @@ span.field-label {
  * Marker.
  */
 /* The "new" or "updated" marker. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003511}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003519}}
 .new,
 .update {
   color: #c00;
@@ -1403,7 +1420,7 @@ span.field-label {
  * Unpublished note.
  */
 /* The word "Unpublished" displayed underneath the content. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003523}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003531}}
 .unpublished {
   height: 0;
   overflow: visible;
@@ -1424,31 +1441,31 @@ span.field-label {
  * Comments.
  */
 /* Wrapper for the list of comments and its title. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003551}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003559}}
 .comments {
   margin: 1.5em 0;
 }
 
 /* Preview of the comment before submitting new or updated comment. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003556}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003564}}
 .comment-preview {
   /* Drupal core will use a #ffffea background. See #1110842. */
   background-color: #ffffea;
 }
 
 /* Wrapper for a single comment. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003562}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003570}}
 .comment {
   /* Comment's permalink wrapper. */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003565}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003573}}
 .comment .permalink {
   text-transform: uppercase;
   font-size: 75%;
 }
 
 /* Nested comments are indented. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003572}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003580}}
 .indented {
   /* Drupal core uses a 25px left margin. */
   margin-left: 30px;
@@ -1458,7 +1475,7 @@ span.field-label {
  * Forms.
  */
 /* Wrapper for a form element (or group of form elements) and its label. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003582}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003590}}
 .form-item {
   margin: 1.5em 0;
   /* Pack groups of checkboxes and radio buttons closer together. */
@@ -1466,61 +1483,61 @@ span.field-label {
   /* Highlight the form elements that caused a form submission error. */
   /* The descriptive help text (separate from the label). */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003586}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003594}}
 .form-checkboxes .form-item, .form-radios .form-item {
   /* Drupal core uses "0.4em 0". */
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003593}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003601}}
 tr.odd .form-item, tr.even .form-item {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003599}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003607}}
 .form-item input.error,
 .form-item textarea.error,
 .form-item select.error {
   border: 1px solid #c00;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003606}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003614}}
 .form-item .description {
   font-size: 0.85em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003613}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003621}}
 .form-type-radio .description,
 .form-type-checkbox .description {
   margin-left: 2.4em;
 }
 
 /* The part of the label that indicates a required field. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003619}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003627}}
 .form-required {
   color: #c00;
 }
 
 /* Labels for radios and checkboxes. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003624}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003632}}
 label.option {
   display: inline;
   font-weight: normal;
 }
 
 /* Buttons used by contrib modules like Media. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003630}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003638}}
 a.button {
   -moz-appearance: button;
   -webkit-appearance: button;
 }
 
 /* Password confirmation. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003635}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003643}}
 .password-parent,
 .confirm-parent {
   margin: 0;
 }
 
 /* Drupal's default login form block. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003641}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003649}}
 #user-login-form {
   text-align: left;
 }
@@ -1532,27 +1549,27 @@ a.button {
  * styling of list items.
  */
 /* OpenID creates a new ul above the login form's links. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003653}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003661}}
 .openid-links {
   /* Position OpenID's ul next to the rest of the links. */
   margin-bottom: 0;
 }
 
 /* The "Log in using OpenID" and "Cancel OpenID login" links. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003659}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003667}}
 .openid-link,
 .user-link {
   margin-top: 1.5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003663}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003671}}
 html.js #user-login-form li.openid-link,
 #user-login-form li.openid-link {
   /* Un-do some of the padding on the ul list. */
   margin-left: -20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003668}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003676}}
 #user-login ul {
   margin: 1.5em 0;
 }
@@ -1560,22 +1577,22 @@ html.js #user-login-form li.openid-link,
 /**
  * Drupal admin tables.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003676}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003684}}
 form th {
   text-align: left;
   padding-right: 1em;
   border-bottom: 3px solid #ccc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003681}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003689}}
 form tbody {
   border-top: 1px solid #ccc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003684}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003692}}
 form table ul {
   margin: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003688}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003696}}
 tr.even,
 tr.odd {
   background-color: #eee;
@@ -1583,26 +1600,26 @@ tr.odd {
   padding: 0.1em 0.6em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003694}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003702}}
 tr.even {
   background-color: #fff;
 }
 
 /* Markup generated by theme_tablesort_indicator(). */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003709}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003717}}
 td.active {
   background-color: #ddd;
 }
 
 /* Center checkboxes inside table cell. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003714}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003722}}
 td.checkbox,
 th.checkbox {
   text-align: center;
 }
 
 /* Drupal core wrongly puts this in system.menus.css. Since we override that, add it back. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003720}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003728}}
 td.menu-disabled {
   background: #ccc;
 }
@@ -1613,7 +1630,7 @@ td.menu-disabled {
  * @see autocomplete.js
  */
 /* Suggestion list. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003731}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003739}}
 #autocomplete .selected {
   background: #0072b9;
   color: #fff;
@@ -1624,19 +1641,19 @@ td.menu-disabled {
  *
  * @see collapse.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003742}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003750}}
 html.js .collapsible .fieldset-legend {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
   background-position: 5px 65%;
   background-repeat: no-repeat;
   padding-left: 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003751}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003759}}
 html.js .collapsed .fieldset-legend {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
   background-position: 5px 50%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003758}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003766}}
 .fieldset-legend .summary {
   color: #999;
   font-size: 0.9em;
@@ -1648,17 +1665,17 @@ html.js .collapsed .fieldset-legend {
  *
  * @see tabledrag.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003770}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003778}}
 tr.drag {
   background-color: #fffff0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003773}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003781}}
 tr.drag-previous {
   background-color: #ffd;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003776}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003784}}
 .tabledrag-toggle-weight {
   font-size: 0.9em;
 }
@@ -1668,7 +1685,7 @@ tr.drag-previous {
  *
  * @see tableselect.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003785}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003793}}
 tr.selected td {
   background: #ffc;
 }
@@ -1678,11 +1695,11 @@ tr.selected td {
  *
  * @see progress.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003794}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003802}}
 .progress {
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003797}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003805}}
 .progress .bar {
   background: #ccc;
   border-color: #666;
@@ -1691,7 +1708,7 @@ tr.selected td {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003803}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_misc\.scss}line{font-family:\00003811}}
 .progress .filled {
   background-color: #0072b9;
   background-image: url('../images/progress.gif?1398863088');
@@ -1783,18 +1800,249 @@ tr.selected td {
     display: none;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_pages\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\000037}}
+#islandora-solr-simple-search-form input.form-submit {
+  background: url(../images/barnard/search_btn.png) no-repeat;
+  border: 0 none;
+  text-indent: -9999px;
+  height: 30px;
+  width: 30px;
+  float: right;
+  position: relative;
+  top: -35px;
+  right: 5px;
+  z-index: 50;
+  transition: all 0.3s ease 0s;
+  opacity: 1;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000320}}
+#islandora-solr-simple-search-form input.form-submit:hover {
+  opacity: 0.7;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000323}}
+#islandora-solr-simple-search-form input.form-text {
+  width: 100%;
+  height: 2.25em;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000335}}
+.not-front #block-islandora-solr-simple {
+  float: right;
+  position: relative;
+  top: -2.22em;
+  width: 18em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000340}}
+.not-front #block-islandora-solr-simple input.form-text {
+  height: 2.8em;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000349}}
+.frontpage-panel {
+  background: #99ccff;
+  width: 425px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  opacity: 0.9;
+  position: relative;
+  top: 5em;
+  left: 5em;
+  text-align: center;
+  font-size: 135%;
+  font-weight: bold;
+  color: white;
+  line-height: 1.4em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000363}}
+.frontpage-panel h1 {
+  letter-spacing: 0.5pt;
+  margin: 0.25em 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000367}}
+.frontpage-panel p {
+  max-width: 75%;
+  margin: 0 auto 1em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000371}}
+.frontpage-panel ul.links {
+  margin: 0;
+  padding: 0.5em 1.25em 1em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000374}}
+.frontpage-panel ul.links li {
+  display: inline;
+  padding: 0 0.25em;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000383}}
+#block-views-featured-block {
+  background: white;
+  width: 300px;
+  float: right;
+  padding: 10px 15px;
+  position: relative;
+  top: -65px;
+  right: 45px;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000396}}
+#block-islandora-solr-sort, #block-islandora-solr-current-query {
+  height: 2em;
+  margin: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\0000399}}
+#block-islandora-solr-sort h2, #block-islandora-solr-current-query h2 {
+  float: left;
+  font-size: 100%;
+  margin-right: 0.25em;
+  font-weight: normal;
+  line-height: 1.7em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003106}}
+#block-islandora-solr-sort ul, #block-islandora-solr-current-query ul {
+  list-style: none outside none;
+  margin-bottom: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003109}}
+#block-islandora-solr-sort ul li, #block-islandora-solr-current-query ul li {
+  display: inline;
+  padding: 0 0.25em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003112}}
+#block-islandora-solr-sort ul li a.active, #block-islandora-solr-current-query ul li a.active {
+  text-decoration: underline;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003119}}
+#block-islandora-solr-display-switch {
+  float: right;
+  position: relative;
+  top: -46px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003123}}
+#block-islandora-solr-display-switch li {
+  float: left;
+  list-style: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003126}}
+#block-islandora-solr-display-switch li a {
+  display: inline-block;
+  padding: 0 2px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003137}}
+.sidebars h2 {
+  text-transform: uppercase;
+  font-size: 95%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003141}}
+.sidebars h3 {
+  font-weight: normal;
+  font-size: 95%;
+  margin: 1em 0 0.25em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003146}}
+.sidebars ul {
+  padding: 0 0 0 1em;
+  margin: 0.5em 0 1.5em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003150}}
+.sidebars a.soft-limit {
+  font-size: 85%;
+  position: relative;
+  top: -1em;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003158}}
+#block-islandora-solr-advanced, #block-islandora-solr-basic-facets, #block-menu-menu-collections {
+  background: #99CCFF;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003166}}
+#block-islandora-solr-advanced .form-item {
+  margin: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003169}}
+#block-islandora-solr-advanced .islandora-solr-advanced-controls {
+  margin-top: 0.5em;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003177}}
+.islandora-solr-search-results .islandora-solr-search-result {
+  margin-bottom: 2em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003179}}
+.islandora-solr-search-results .islandora-solr-search-result dl.solr-fields, .islandora-solr-search-results .islandora-solr-search-result .solr-fields dt, .islandora-solr-search-results .islandora-solr-search-result .solr-fields dd {
+  border: 0 none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003185}}
+div.results {
+  display: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003187}}
+div.results span {
+  margin-right: 1.5em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003190}}
+div.results .breadcrumb {
+  display: inline-block;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_islandora\.scss}line{font-family:\00003194}}
+body.page-islandora-search div.results {
+  display: block;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_pages\.scss}line{font-family:\000038}}
+body.front {
+  background: url(../images/barnard/barnard-back-1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_pages\.scss}line{font-family:\0000316}}
 #header, #footer {
   background: black;
+  height: 45px;
   width: 100%;
   position: absolute;
   left: 0;
   right: 0;
+  z-index: 50;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_pages\.scss}line{font-family:\0000310}}
-#header a, #footer a {
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_pages\.scss}line{font-family:\0000324}}
+.not-front #footer {
+  position: absolute !important;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_pages\.scss}line{font-family:\0000329}}
+#footer a {
   text-transform: uppercase;
   text-decoration: none;
+  font-size: 90%;
+  letter-spacing: 0.5pt;
+  line-height: 4em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_pages\.scss}line{font-family:\0000336}}
+#footer a:link, #footer a:visited {
+  color: white;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/drupal7\/sites\/all\/themes\/barnard_theme\/sass\/components\/_pages\.scss}line{font-family:\0000341}}
+#name-and-slogan, #main-menu {
+  float: left;
+  clear: left;
 }
 
 /* SMACSS theme rules */

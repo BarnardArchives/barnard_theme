@@ -82,6 +82,7 @@
   float: left;
   margin: 0;
   padding: 0;
+  line-height: 2.35em;
 }
 
 /* Logo image. */
@@ -91,13 +92,13 @@
 
 /* Wrapper for website name and slogan. */
 .header__name-and-slogan {
-  float: left;
+  //float: left;
 }
 
 /* The name of the website. */
 .header__site-name {
-  margin: 0;
-  @include adjust-font-size-to( $h1-font-size );
+  margin: 0.35em 0 0;
+  @include adjust-font-size-to( $h2-font-size );
 }
 
 /* The link around the name of the website. */
@@ -136,6 +137,9 @@
 #navigation {
   /* Sometimes you want to prevent overlapping with main div. */
   /* overflow: hidden; */
+  margin-top: 45px;
+  background: url(../images/barnard/athena-small.png) no-repeat top left #99CCFF;
+  //
 
   .block {
     margin-bottom: 0;
@@ -159,6 +163,10 @@
       padding: 0 10px 0 0;
       list-style-type: none;
       list-style-image: none;
+      a:link, a:visited {
+        text-decoration: none;
+        font-weight: bold;
+      }
     }
   }
 }
