@@ -130,3 +130,55 @@ function barnard_theme_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
+
+function barnard_theme_preprocess_page(&$vars) {
+  if (module_exists('bc_islandora')) {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    _bc_islandora_featured();
+  }
+}
+
+function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
+  $object = $vars['object'];
+  $issue = islandora_object_load(islandora_newspaper_get_issue($object));
+  if (module_exists('bc_islandora')) {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    $page_number = _bc_islandora_get_sequence($object);
+    //$vars['content'] = theme('bc_islandora_newspaper_page', array('object' => $object));
+    $vars['content'] = theme('bc_islandora_newspaper_issue', array('object' => $issue, 'start_page' => $page_number));
+  }
+}
+
+function barnard_theme_preprocess_islandora_newspaper_issue(&$vars) {
+  $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $vars['object']));
+}
+
+function barnard_theme_preprocess_islandora_book_book(&$vars) {
+  $object = $vars['object'];
+  if (module_exists('bc_islandora')) {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    if (_bc_islandora_is_document($object)) {
+      drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
+      $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $object));
+    }
+  }
+}
+
+function barnard_theme_preprocess_islandora_book_page(&$vars) {
+
+}
+
+function barnard_theme_preprocess_islandora_newspaper_page_controls(&$vars) {
+  // TODO rewrite the contents of $vars['controls'] - to be sent through
+  // theme_item_list().
+}
+
+function barnard_theme_breadcrumb(&$vars) {
+  $breadcrumb = $vars['breadcrumb'];
+  if (module_exists('bc_islandora')) {
+    return theme('bc_islandora_breadcrumb', array('breadcrumb' => $breadcrumb));
+  }
+  else {
+    return '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
+  }
+}
