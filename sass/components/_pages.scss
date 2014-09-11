@@ -33,6 +33,9 @@ body.front {
 			font-size: 90%;
 			letter-spacing: 0.5pt;
 			line-height: 4em;
+			&:hover, &:active {
+				color: #ccc;
+			}
 		}
 	}
 }
