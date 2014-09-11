@@ -131,6 +131,11 @@ body {
   padding: 0;
 }
 
+/* Remove Zen Menu Highlights */
+[tabindex="-1"] {
+  outline: 0;
+}
+
 /**
  * Links
  *
@@ -141,9 +146,6 @@ body {
   a {
     &:link, &:visited {
       color: white;
-    }
-    &:hover, &:active {
-      color: $darkgrey_color;
     }
   }
 }

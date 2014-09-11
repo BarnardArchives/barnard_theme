@@ -19,6 +19,39 @@
 	  }
 	};*/
 
+	// Window load event used just in case window height is dependant upon images
+	$(window).bind("load", function() { 
+             var footerHeight = 0,
+           $footer = $("#footer");
+           
+       positionFooter();
+       
+       function positionFooter() {
+       
+                footerHeight = $footer.height();
+       
+               if ( ($(document.body).height()+(footerHeight)) < $(window).height()) {
+                   //must stick to bottom
+                   $footer.css({
+                        position: "fixed",
+                        bottom: 0,
+                        left:0,
+                        right:0
+                   })
+               } else {
+                   $footer.attr("style", "");
+               }
+               
+       }
+
+       $(window).resize(positionFooter);
+	});
+	
+    //Adds placeholder text in the islandora solr simple search form
+	$(document).ready(function () {
+	  	$('#islandora-solr-simple-search-form input.form-text').attr('placeholder', 'Search...');
+	});
+/*
 	// Sticky footer
 	function positionFooter() {
 	    var mFoo = $("#footer");
@@ -41,5 +74,5 @@
 	    //Adds placeholder text in the islandora solr simple search form
       	$('#islandora-solr-simple-search-form input.form-text').attr('placeholder', 'Search...');
 	});
-
+*/
 })(jQuery, Drupal, this, this.document);

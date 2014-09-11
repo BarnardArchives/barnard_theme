@@ -21,21 +21,22 @@ body.front {
 	left: 0; right: 0;
 	z-index: 50;
 }
-.not-front #footer {
-	position: absolute !important;
-}
 
 #footer {
 	.footer-content {
+		margin: 0;
 		a {
 			text-transform: uppercase;
 			text-decoration: none;
 			font-size: 90%;
 			letter-spacing: 0.5pt;
 			line-height: 4em;
-			&:hover, &:active {
-				color: #ccc;
+			&:link, &:visited {
+				color: white;
 			}
+		    &:hover, &:active {
+				color: #ccc;
+		    }	
 		}
 	}
 }
