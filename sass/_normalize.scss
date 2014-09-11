@@ -137,11 +137,15 @@ body {
  * The order of link states are based on Eric Meyer's article:
  * http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
  */
-.front a:link {
-  color: white;
-}
-.front a:visited {
-  color: white;
+.front {
+  a {
+    &:link, &:visited {
+      color: white;
+    }
+    &:hover, &:active {
+      color: $darkgrey_color;
+    }
+  }
 }
 a:link {
   color: black;

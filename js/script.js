@@ -14,19 +14,10 @@
 
 
 // To understand behaviors, see https://drupal.org/node/756722#behaviors
-Drupal.behaviors.my_custom_behavior = {
-  attach: function(context, settings) {
-
-    // Adds placeholder text in the islandora solr simple search form
-	$('#islandora-solr-simple-search-form input.form-text', context).val(Drupal.t('Search...'));
-	  $('#islandora-solr-simple-search-form input.form-text', context).focus(function() {
-	      if ($(this).val() == Drupal.t('Search...')) $(this).val('');
-	  });
-	  $('#islandora-solr-simple-search-form input.form-text', context).blur(function() {
-	      if ($(this).val() == '') $(this).val(Drupal.t('Search...'));
-	  });
+/*Drupal.behaviors.my_custom_behavior = {
+  attach: function(context, settings) {  	
 	  }
-	};
+	};*/
 
 	// Sticky footer
 	function positionFooter() {
@@ -47,6 +38,8 @@ Drupal.behaviors.my_custom_behavior = {
 	    $(window).scroll(positionFooter);
 	    $(window).resize(positionFooter);
 	    $(window).load(positionFooter);
+	    //Adds placeholder text in the islandora solr simple search form
+      	$('#islandora-solr-simple-search-form input.form-text').attr('placeholder', 'Search...');
 	});
 
 })(jQuery, Drupal, this, this.document);
