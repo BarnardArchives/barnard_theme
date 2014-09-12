@@ -23,13 +23,9 @@
 	$(window).bind("load", function() { 
              var footerHeight = 0,
            $footer = $("#footer");
-           
        positionFooter();
-       
-       function positionFooter() {
-       
-                footerHeight = $footer.height();
-       
+       function positionFooter() { 
+                footerHeight = $footer.height(); 
                if ( ($(document.body).height()+(footerHeight)) < $(window).height()) {
                    //must stick to bottom
                    $footer.css({
@@ -40,10 +36,8 @@
                    })
                } else {
                    $footer.attr("style", "");
-               }
-               
+               }        
        }
-
        $(window).resize(positionFooter);
 	});
 	
@@ -51,28 +45,5 @@
 	$(document).ready(function () {
 	  	$('#islandora-solr-simple-search-form input.form-text').attr('placeholder', 'Search...');
 	});
-/*
-	// Sticky footer
-	function positionFooter() {
-	    var mFoo = $("#footer");
-	    if ((($(document.body).height() + mFoo.outerHeight()) < $(window).height() && mFoo.css("position") == "fixed") || ($(document.body).height() < $(window).height() && mFoo.css("position") != "fixed")) {
-	        mFoo.css({
-	            position: "fixed",
-	            bottom: "0px"
-	        });
-	    } else {
-	        mFoo.css({
-	            position: "static"
-	        });
-	    }
-	}
-	$(document).ready(function () {
-	    positionFooter();
-	    $(window).scroll(positionFooter);
-	    $(window).resize(positionFooter);
-	    $(window).load(positionFooter);
-	    //Adds placeholder text in the islandora solr simple search form
-      	$('#islandora-solr-simple-search-form input.form-text').attr('placeholder', 'Search...');
-	});
-*/
+
 })(jQuery, Drupal, this, this.document);
