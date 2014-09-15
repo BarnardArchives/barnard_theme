@@ -131,17 +131,23 @@ body {
   padding: 0;
 }
 
+/* Remove Zen Menu Highlights */
+[tabindex="-1"] {
+  outline: 0;
+}
+
 /**
  * Links
  *
  * The order of link states are based on Eric Meyer's article:
  * http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
  */
-.front a:link {
-  color: white;
-}
-.front a:visited {
-  color: white;
+.front {
+  a {
+    &:link, &:visited {
+      color: white;
+    }
+  }
 }
 a:link {
   color: black;
