@@ -147,6 +147,9 @@ body {
     &:link, &:visited {
       color: white;
     }
+    &:hover, &:active {
+      color: #808080;
+    }
   }
 }
 a:link {
