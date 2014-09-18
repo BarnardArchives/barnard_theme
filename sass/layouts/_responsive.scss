@@ -66,6 +66,8 @@ $zen-auto-include-item-base: false;
     /* Move the navbar up inside #main's padding. */
     position: absolute;
     top: 0;
+    left: 0;
+    z-index: 150;
     height: $nav-height;
     width: $zen-grid-width;
   }
@@ -156,7 +158,7 @@ $zen-auto-include-item-base: false;
  */
 @media all and (min-width: 960px) {
 
-  $zen-column-count: 5;
+  $zen-column-count: 7;
 
   /**
    * The layout when there is only one sidebar, the left one.
@@ -164,12 +166,12 @@ $zen-auto-include-item-base: false;
   .sidebar-first {
     /* Span 4 columns, starting in 2nd column from left. */
     #content {
-      @include zen-grid-item(4, 2);
+      @include zen-grid-item(5, 3);
     }
 
     /* Span 1 column, starting in 1st column from left. */
     .region-sidebar-first {
-      @include zen-grid-item(1, 1);
+      @include zen-grid-item(2, 1);
     }
   }
 
