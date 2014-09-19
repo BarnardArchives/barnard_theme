@@ -73,6 +73,45 @@ $zen-auto-include-item-base: false;
   }
 }
 
+@media all and (min-width: 320px) and (max-width: 540px) {
+  #navigation {
+    margin: 0 !important;
+    padding: 0 15px !important;
+  }
+  #header {
+    padding-left: 1.25em !important;
+    position: relative !important;
+  }
+  #content {
+    clear: both !important;
+    .page__title {
+      margin: 0.75em 0 !important;
+    }
+  }
+  .frontpage-panel {
+    left: 0 !important;
+    top: 1em !important;
+    width: 270px !important;
+    margin: 0 auto !important;
+  }
+  #block-views-featured-block {
+    width: 270px !important;
+    right: 9px !important;
+    top: -45px !important;
+  }
+  #block-islandora-solr-display-switch {
+    top: -40px !important;
+    left: 5px;
+  }
+  .not-front #block-islandora-solr-simple {
+    float: none !important;
+    top: 0.75em !important;
+    width: auto !important;
+    padding-bottom: 2.1em !important;
+  }
+}
+
+
 } // End of @if $zen-reverse-all-floats == true
 
 /**
