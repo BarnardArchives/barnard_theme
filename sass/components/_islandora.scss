@@ -91,6 +91,8 @@
 	border-radius: 7px;
 	opacity: 0.8;	
 	a {
+		display: inline-block;
+		line-height: 1.75em;
 		&:link, &:visited {
 			color: black;
 		}
