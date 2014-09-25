@@ -91,8 +91,6 @@
 	border-radius: 7px;
 	opacity: 0.8;	
 	a {
-		display: inline-block;
-		line-height: 1.75em;
 		&:link, &:visited {
 			color: black;
 		}
@@ -113,6 +111,9 @@
 	margin-right: 0.25em;
 	font-weight: normal;
 	line-height: 1.7em;
+	&:after {
+		content: " by:";
+	}
   }
   ul {
   	list-style: none outside none;
