@@ -16,7 +16,7 @@
       <a href="http://barnard.edu" title="Barnard College" class="header__logo" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" class="header__logo-image" /></a>
     <?php endif; ?>
 
-    <?php if ($secondary_menu): ?>
+    <?php if ($secondary_menu && !empty($secondary_menu_heading)): ?>
       <nav class="header__secondary-menu" id="secondary-menu" role="navigation">
         <?php print theme('links__system_secondary_menu', array(
           'links' => $secondary_menu,
@@ -33,7 +33,6 @@
     <?php endif; ?>
 
     <?php print render($page['header']); ?>
-
   </header>
 
   <div id="navigation">
@@ -76,7 +75,7 @@
     <?php print render($page['navigation']); ?>
 
   </div>
-    
+      
   <div id="main">
 
     <div id="content" class="column" role="main">
@@ -96,6 +95,11 @@
       <div class="results"><span class="results-for"><?php print t('Results for'); ?></span><?php print $breadcrumb; ?></div>
       <?php print render($page['content']); ?>
       <?php print $feed_icons; ?>
+      <?php if (isset($socialmedia)): ?>
+        <span class="socialmedia">
+          <?php print $socialmedia; ?>
+        </span>
+      <?php endif; ?>
     </div>
 
     <?php
