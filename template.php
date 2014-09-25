@@ -132,9 +132,16 @@ function barnard_theme_preprocess_block(&$variables, $hook) {
 // */
 
 function barnard_theme_preprocess_page(&$vars) {
-  if (module_exists('bc_islandora')) {
+  if (module_exists('bc_islandora') && $vars['is_front']) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
-    _bc_islandora_featured();
+    $vars['page']['footer']['front_caption'] = array(
+      '#markup' => _bc_islandora_featured(),
+      '#prefix' => '<div id="block-views-featured-block">',
+      '#suffix' => '</div>',
+    );
+  }
+  if (module_exists('service_links') && _service_links_match_path()) {
+    $vars['socialmedia'] = implode('', service_links_render(NULL));
   }
 }
 
@@ -144,13 +151,15 @@ function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
   if (module_exists('bc_islandora')) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     $page_number = _bc_islandora_get_sequence($object);
-    //$vars['content'] = theme('bc_islandora_newspaper_page', array('object' => $object));
-    $vars['content'] = theme('bc_islandora_newspaper_issue', array('object' => $issue, 'start_page' => $page_number));
+    $vars['content'] = theme('bc_islandora_newspaper_page', array('object' => $object));
   }
 }
 
 function barnard_theme_preprocess_islandora_newspaper_issue(&$vars) {
   $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $vars['object']));
+  if (module_exists('service_links')) {
+    $vars['service_links'] = service_links_render(NULL);
+  }
 }
 
 function barnard_theme_preprocess_islandora_book_book(&$vars) {
@@ -168,9 +177,11 @@ function barnard_theme_preprocess_islandora_book_page(&$vars) {
 
 }
 
-function barnard_theme_preprocess_islandora_newspaper_page_controls(&$vars) {
-  // TODO rewrite the contents of $vars['controls'] - to be sent through
-  // theme_item_list().
+function barnard_theme_preprocess_islandora_large_image(&$vars) {
+  if (module_exists('bc_islandora')) {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    $vars['dl_links'] = _bc_islandora_dl_links($vars['islandora_object'], array('JPG'));
+  }
 }
 
 function barnard_theme_breadcrumb(&$vars) {

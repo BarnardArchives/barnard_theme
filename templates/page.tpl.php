@@ -33,7 +33,6 @@
     <?php endif; ?>
 
     <?php print render($page['header']); ?>
-
   </header>
 
   <div id="navigation">
@@ -76,7 +75,7 @@
     <?php print render($page['navigation']); ?>
 
   </div>
-    
+      
   <div id="main">
 
     <div id="content" class="column" role="main">
@@ -96,6 +95,11 @@
       <div class="results"><span class="results-for"><?php print t('Results for'); ?></span><?php print $breadcrumb; ?></div>
       <?php print render($page['content']); ?>
       <?php print $feed_icons; ?>
+      <?php if (isset($socialmedia)): ?>
+        <span class="socialmedia">
+          <?php print $socialmedia; ?>
+        </span>
+      <?php endif; ?>
     </div>
 
     <?php
