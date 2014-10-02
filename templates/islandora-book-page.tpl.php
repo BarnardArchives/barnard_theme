@@ -4,9 +4,12 @@
  * Template file to style output.
  */
 ?>
-<?php
-  print $book_object_id ? l(t('Return to Book View'), "islandora/object/{$book_object_id}") : t('Orphaned page (no associated book)');
-?>
+<?php if (isset($dl_links)): ?>
+  <p>
+    <strong>Download:</strong>
+    <?php print $dl_links; ?>
+  </p>
+<?php endif;?>
 <?php if (isset($viewer)): ?>
   <div id="book-page-viewer">
     <?php print $viewer; ?>

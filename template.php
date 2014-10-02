@@ -140,6 +140,9 @@ function barnard_theme_preprocess_page(&$vars) {
       '#suffix' => '</div>',
     );
   }
+  if (module_exists('bc_islandora') && !$vars['is_front'] && arg(1) != 'search') {
+    $vars['bc_breadcrumb'] = theme('bc_islandora_breadcrumb', array('breadcrumb' => array()));
+  }
   if (module_exists('service_links') && _service_links_match_path()) {
     $vars['socialmedia'] = implode('', service_links_render(NULL));
   }
@@ -165,6 +168,7 @@ function barnard_theme_preprocess_islandora_newspaper_issue(&$vars) {
 function barnard_theme_preprocess_islandora_book_book(&$vars) {
   $object = $vars['object'];
   if (module_exists('bc_islandora')) {
+    $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF'));
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     if (_bc_islandora_is_document($object)) {
       drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
@@ -174,22 +178,15 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
 }
 
 function barnard_theme_preprocess_islandora_book_page(&$vars) {
-
+  $object = $vars['object'];
+  if (module_exists('bc_islandora')) {
+    $vars['dl_links'] = _bc_islandora_dl_links($object, array('JPG'));
+  }
 }
 
 function barnard_theme_preprocess_islandora_large_image(&$vars) {
   if (module_exists('bc_islandora')) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     $vars['dl_links'] = _bc_islandora_dl_links($vars['islandora_object'], array('JPG'));
-  }
-}
-
-function barnard_theme_breadcrumb(&$vars) {
-  $breadcrumb = $vars['breadcrumb'];
-  if (module_exists('bc_islandora')) {
-    return theme('bc_islandora_breadcrumb', array('breadcrumb' => $breadcrumb));
-  }
-  else {
-    return '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
   }
 }
