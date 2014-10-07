@@ -159,7 +159,9 @@ function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
 }
 
 function barnard_theme_preprocess_islandora_newspaper_issue(&$vars) {
-  $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $vars['object']));
+  if (module_exists('bc_islandora')) {
+    $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $vars['object']));
+  }
   if (module_exists('service_links')) {
     $vars['service_links'] = service_links_render(NULL);
   }
@@ -168,8 +170,8 @@ function barnard_theme_preprocess_islandora_newspaper_issue(&$vars) {
 function barnard_theme_preprocess_islandora_book_book(&$vars) {
   $object = $vars['object'];
   if (module_exists('bc_islandora')) {
-    $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF'));
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF'));
     if (_bc_islandora_is_document($object)) {
       drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
       $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $object));
@@ -180,6 +182,7 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
 function barnard_theme_preprocess_islandora_book_page(&$vars) {
   $object = $vars['object'];
   if (module_exists('bc_islandora')) {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('JPG'));
   }
 }
