@@ -82,7 +82,7 @@
   float: left;
   margin: 0;
   padding: 0;
-  line-height: 2.35em;
+  margin: 11px 0 0;
 }
 
 /* Logo image. */
@@ -141,6 +141,10 @@
   padding: 0 3.5em;
   background: url(../images/barnard/athena-small.png) no-repeat -27px -39px #99CCFF;
   //
+  #main-menu {
+    position: relative;
+    z-index: 100;
+  }
 
   .block {
     margin-bottom: 0;
@@ -170,6 +174,10 @@
       }
     }
   }
+}
+
+body.logged-in #navigation {
+  margin-top: 74px;
 }
 
 /**
@@ -737,7 +745,7 @@ td.menu-disabled {
  */
 
 /* Suggestion list. */
-#autocomplete .selected {
+#autocomplete #navigationelected {
   background: #0072b9;
   color: #fff;
 }
