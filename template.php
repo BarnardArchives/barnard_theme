@@ -193,3 +193,14 @@ function barnard_theme_preprocess_islandora_large_image(&$vars) {
     $vars['dl_links'] = _bc_islandora_dl_links($vars['islandora_object'], array('JPG'));
   }
 }
+
+
+
+/**
+ * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
+ */
+function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+  if(!$query_processor->solrQuery || $query_processor->solrQuery == ' ') {
+    unset($search_results['object_url_params']['solr']);
+  }
+}
