@@ -200,7 +200,120 @@ function barnard_theme_preprocess_islandora_large_image(&$vars) {
  * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
  */
 function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
-  if(!$query_processor->solrQuery || $query_processor->solrQuery == ' ') {
+  $query = trim ($query_processor->solrQuery);
+  if(empty($query)) {
     unset($search_results['object_url_params']['solr']);
+  }
+}
+
+
+/**
+ * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
+ *
+ * Add page viewing fragment and search term to show all search results within
+ * book on page load.
+ */
+function barnard_theme_islandora_bookCModel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+  $view_types = array(
+    "1" => "1up",
+    "2" => "2up",
+    "3" => "thumb",
+  );
+
+  $field_match = array(
+    'catch_all_fields_mt',
+    'OCR_t',
+    'text_nodes_HOCR_hlt',
+  );
+
+  $field_term = '';
+  $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
+  foreach ($fields as $field) {
+    if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
+      if (isset($matches[1]) && in_array($matches[1], $field_match)) {
+        $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
+        break;
+      }
+    }
+  }
+
+  if ($field_term) {
+    $search_term = trim($field_term);
+  }
+  elseif ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
+    $search_term = trim($query_processor->solrQuery);
+  }
+
+  $ia_view = variable_get('islandora_internet_archive_bookreader_default_page_view', "1");
+  $search_results['object_url_fragment'] = "page/1/mode/{$view_types[$ia_view]}";
+  if (!empty($search_term)) {
+    $search_results['object_url_fragment'] .= "/search/" . rawurlencode($search_term);
+  }
+}
+
+/**
+ * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
+ *
+ * Replaces the url for the search result to be the book's url, not the page.
+ * The page is added as a fragment at the end of the book url.
+ */
+function barnard_theme_islandora_pageCModel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+  // Grab the names of the appropriate solr fields from the db.
+  $parent_book_field_name = variable_get('islandora_book_parent_book_solr_field', 'RELS_EXT_isMemberOf_uri_ms');
+  $page_number_field_name = variable_get('islandora_paged_content_page_number_solr_field', 'RELS_EXT_isSequenceNumber_literal_ms');
+  // If:
+  // there's an object url AND
+  // there's a solr doc AND
+  // the solr doc contains the parent book AND
+  // the solr doc contains the page number...
+  if (isset($search_results['object_url']) &&
+    isset($search_results['solr_doc']) &&
+    isset($search_results['solr_doc'][$parent_book_field_name]) &&
+    count($search_results['solr_doc'][$parent_book_field_name]) &&
+    isset($search_results['solr_doc'][$page_number_field_name]) &&
+    count($search_results['solr_doc'][$page_number_field_name])) {
+    // Replace the result url with that of the parent book and add the page
+    // number as a fragment.
+    $book_pid = preg_replace('/info\:fedora\//', '', $search_results['solr_doc'][$parent_book_field_name][0], 1);
+    $page_number = $search_results['solr_doc'][$page_number_field_name][0];
+
+    if (islandora_object_access(ISLANDORA_VIEW_OBJECTS, islandora_object_load($book_pid))) {
+      $search_results['object_url'] = "islandora/object/$book_pid";
+      $view_types = array(
+        "1" => "1up",
+        "2" => "2up",
+        "3" => "thumb",
+      );
+      $ia_view = variable_get('islandora_internet_archive_bookreader_default_page_view', "1");
+      $search_results['object_url_fragment'] = "page/$page_number/mode/{$view_types[$ia_view]}";
+
+      $field_match = array(
+        'catch_all_fields_mt',
+        'OCR_t',
+        'text_nodes_HOCR_hlt',
+      );
+
+      $field_term = '';
+      $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
+      foreach ($fields as $field) {
+        if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
+          if (isset($matches[1]) && in_array($matches[1], $field_match)) {
+            $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
+            break;
+          }
+        }
+      }
+
+      if ($field_term) {
+        $search_term = trim($field_term);
+      }
+      elseif ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
+        $search_term = trim($query_processor->solrQuery);
+      }
+
+      if (!empty($search_term)) {
+        $search_results['object_url_fragment'] .= "/search/" . rawurlencode($search_term);
+      }
+    }
   }
 }
