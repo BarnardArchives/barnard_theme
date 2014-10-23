@@ -54,7 +54,7 @@
 	border-radius: 10px;
 	opacity: 0.9;
 	position: relative;
-	left: 5em;
+	// left: 5em;
 	text-align: center;
 	//
 	font-size: 135%;
@@ -87,8 +87,9 @@
 	float: right;
 	padding: 10px 15px;
 	position: absolute;
-	top: -82px; right: 62px;
-	border-radius: 7px;
+  // top: -82px; right: 62px;
+  top: -100px; right: 62px;
+  border-radius: 7px;
 	opacity: 0.8;	
 	a {
 		display: inline-block;
@@ -112,7 +113,7 @@
 	font-size: 100%;
 	margin-right: 0.25em;
 	font-weight: normal;
-	line-height: 1.7em;
+	line-height: 1.5em;
   }
   ul {
   	list-style: none outside none;
