@@ -146,6 +146,18 @@ function barnard_theme_preprocess_page(&$vars) {
   if (module_exists('service_links') && _service_links_match_path()) {
     $vars['socialmedia'] = implode('', service_links_render(NULL));
   }
+  if (isset($vars['node']) && $vars['node']->type == 'exhibition') {
+    drupal_add_js(drupal_get_path('module', 'bc_islandora') . '/js/dc_exhibit.js');
+    drupal_add_css(drupal_get_path('module', 'bc_islandora') . '/css/dc_exhibit.css');
+  }
+}
+
+function barnard_theme_preprocess_node(&$vars) {
+  $node = $vars['node'];
+  if ($node->type == 'exhibition') {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    $vars['exhibition'] = theme('bc_islandora_exhibition', array('node' => $node));
+  }
 }
 
 function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
