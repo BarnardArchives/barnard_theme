@@ -52,11 +52,11 @@ function barnard_theme_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/* -- Delete this line if you want to use this function
+/*
 function barnard_theme_preprocess_page(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
+
 }
-// */
+*/
 
 /**
  * Override or insert variables into the node templates.
@@ -131,7 +131,7 @@ function barnard_theme_preprocess_block(&$variables, $hook) {
 }
 // */
 
-function barnard_theme_preprocess_page(&$vars) {
+function barnard_theme_preprocess_page(&$vars, $hook) {
   if (module_exists('bc_islandora') && $vars['is_front']) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     $vars['page']['footer']['front_caption'] = array(
@@ -143,8 +143,13 @@ function barnard_theme_preprocess_page(&$vars) {
   if (module_exists('bc_islandora') && !$vars['is_front'] && arg(1) != 'search') {
     $vars['bc_breadcrumb'] = theme('bc_islandora_breadcrumb', array('breadcrumb' => array()));
   }
+  if (arg(0) == 'islandora' && arg(1) == 'object') {
+    $vars['permalink'] = l('permalink', $_GET['q']);
+  }
   if (module_exists('service_links') && _service_links_match_path()) {
-    $vars['socialmedia'] = implode('', service_links_render(NULL));
+    $vars['socialmedia'] = '';
+    //$vars['socialmedia'] = '<b>Share: (' .  l('permalink', $_GET['q']) . ')</b>';
+    $vars['socialmedia'] .= implode('', service_links_render(NULL));
   }
 }
 
@@ -169,12 +174,18 @@ function barnard_theme_preprocess_islandora_newspaper_issue(&$vars) {
 
 function barnard_theme_preprocess_islandora_book_book(&$vars) {
   $object = $vars['object'];
+
   if (module_exists('bc_islandora')) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF'));
-    if (_bc_islandora_is_document($object)) {
+    if (_bc_islandora_is_genre($object, array('letter', 'periodicals'))) {
+      module_load_include('inc', 'islandora', 'includes/metadata');
+
+      $vars['metadata'] = islandora_retrieve_metadata_markup($object);
+
       drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
       $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $object));
+      $vars['letter'] = TRUE;
     }
   }
 }
