@@ -212,9 +212,12 @@ function barnard_theme_preprocess_islandora_large_image(&$vars) {
  * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
  */
 function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
-  $query = trim ($query_processor->solrQuery);
-  if(empty($query)) {
+  $query = trim($query_processor->solrQuery);
+  if (empty($query)) {
     unset($search_results['object_url_params']['solr']);
+  }
+  else {
+    $search_results['object_url_params']['solr']['params'] = array('defType' => 'dismax');
   }
 }
 
