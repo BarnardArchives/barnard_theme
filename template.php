@@ -151,6 +151,18 @@ function barnard_theme_preprocess_page(&$vars, $hook) {
     //$vars['socialmedia'] = '<b>Share: (' .  l('permalink', $_GET['q']) . ')</b>';
     $vars['socialmedia'] .= implode('', service_links_render(NULL));
   }
+  if (isset($vars['node']) && $vars['node']->type == 'exhibition') {
+    drupal_add_js(drupal_get_path('module', 'bc_islandora') . '/js/dc_exhibit.js');
+    drupal_add_css(drupal_get_path('module', 'bc_islandora') . '/css/dc_exhibit.css');
+  }
+}
+
+function barnard_theme_preprocess_node(&$vars) {
+  $node = $vars['node'];
+  if ($node->type == 'exhibition') {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    $vars['exhibition'] = theme('bc_islandora_exhibition', array('node' => $node));
+  }
 }
 
 function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
@@ -211,9 +223,12 @@ function barnard_theme_preprocess_islandora_large_image(&$vars) {
  * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
  */
 function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
-  $query = trim ($query_processor->solrQuery);
-  if(empty($query)) {
+  $query = trim($query_processor->solrQuery);
+  if (empty($query)) {
     unset($search_results['object_url_params']['solr']);
+  }
+  else {
+    $search_results['object_url_params']['solr']['params'] = array('defType' => 'dismax');
   }
 }
 

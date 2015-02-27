@@ -102,6 +102,10 @@
           <?php print $socialmedia; ?>
         </span>
       <?php endif; ?>
+      <?php // TODO ?>
+      <?php //if (isset($permalink)): ?>
+        <?php //print $permalink; ?>
+      <?php //endif;?>
     </div>
 
     <?php
