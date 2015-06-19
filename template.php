@@ -160,6 +160,20 @@ function barnard_theme_preprocess_node(&$vars) {
   }
 }
 
+function barnard_theme_preprocess_islandora_basic_collection_wrapper(&$variables) {
+  // TODO check: is this a pub?
+  $object = $variables['islandora_object'];
+  $collection_results = $object->relationships->get(FEDORA_RELS_EXT_URI, 'isMemberOf');
+  $cm_results = $object->relationships->get(FEDORA_MODEL_URI, 'hasModel');
+  $mods = isset($object['MODS']) ? simplexml_load_string($object['MODS']->getContent(NULL)) : NULL;
+  $identifier = (string) $mods->identifier;
+  $id_prefix = preg_replace('/^BC/', '', array_shift(explode('-', array_shift(explode('_', $identifier)))));
+
+  if ($variables['islandora_object']->id == variable_get('bc_islandora_student_pubs_pid', 'islandora:1022') || $id_prefix == '12') {
+    $variables['student_pubs'] = TRUE;
+  }
+}
+
 function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
   $object = $vars['object'];
   $issue = islandora_object_load(islandora_newspaper_get_issue($object));
