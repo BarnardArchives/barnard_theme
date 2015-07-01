@@ -24,32 +24,18 @@
 <div class="islandora-large-image-object islandora" vocab="http://schema.org/" prefix="dcterms: http://purl.org/dc/terms/" typeof="ImageObject">
   <div class="islandora-large-image-content-wrapper clearfix">
     <?php if ($islandora_content): ?>
+      <?php // Provide datastream download links, if available. ?>
       <?php if (isset($dl_links)): ?>
         <p>
           <strong>Download:</strong>
           <?php print $dl_links; ?>
         </p>
       <?php endif; ?>
-      <?php if (isset($image_clip)): ?>
-        <?php //print $image_clip; ?>
-      <?php endif; ?>
-      <!-- <div class="islandora-large-image-content"> -->
-        <?php print $islandora_content; ?>
-      <!-- </div> -->
+      <?php print $islandora_content; ?>
     <?php endif; ?>
   </div>
   <div class="islandora-large-image-metadata">
     <?php print $description; ?>
-    <?php if ($parent_collections): ?>
-      <!--<div>
-        <h2><?php print t('In collections'); ?></h2>
-        <ul>
-          <?php foreach ($parent_collections as $collection): ?>
-        <li><?php print l($collection->label, "islandora/object/{$collection->id}"); ?></li>
-          <?php endforeach; ?>
-        </ul>
-      </div>-->
-    <?php endif; ?>
     <?php print $metadata; ?>
   </div>
 </div>

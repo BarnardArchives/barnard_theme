@@ -20,8 +20,6 @@
  *
  * @see template_preprocess_islandora_large_image()
  * @see theme_islandora_large_image()
- *
- * @TODO: review documentation about file and variables
  */
 ?>
 <div class="islandora-newspaper-object">

@@ -87,9 +87,10 @@
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
   <?php endif; ?>
   <div class="content"<?php print $content_attributes; ?>>
-    <?php // print views_embed_view('exhibition', 'block', $node->nid); ?>
     <?php if (isset($exhibition)): ?>
       <?php print $exhibition; ?>
+    <?php else: ?>
+      <?php print views_embed_view('exhibition', 'block', $node->nid); ?>
     <?php endif; ?>
   </div>
 

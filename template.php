@@ -131,7 +131,12 @@ function barnard_theme_preprocess_block(&$variables, $hook) {
 }
 // */
 
+/**
+ * Implements hook_preprocess_page().
+ */
 function barnard_theme_preprocess_page(&$vars) {
+  // If we have bc_islandora and this is the front page, invoke
+  // _bc_islandora_featured() and set  $vars['page']['footer']['front_caption'].
   if (module_exists('bc_islandora') && $vars['is_front']) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     $vars['page']['footer']['front_caption'] = array(
@@ -140,50 +145,70 @@ function barnard_theme_preprocess_page(&$vars) {
       '#suffix' => '</div>',
     );
   }
+  // If we have bc_islandora, this is NOT the front page, and this is not a
+  // search result page, call bc_islandora's custom breadcrumb theming method
+  // and set $vars['bc_breadcrumb'].
   if (module_exists('bc_islandora') && !$vars['is_front'] && arg(1) != 'search') {
     $vars['bc_breadcrumb'] = theme('bc_islandora_breadcrumb', array('breadcrumb' => array()));
   }
+  // If we have service_links, set $vars['socialmedia'].
   if (module_exists('service_links') && _service_links_match_path()) {
     $vars['socialmedia'] = implode('', service_links_render(NULL));
   }
-  if (isset($vars['node']) && $vars['node']->type == 'exhibition') {
+  // If we have bc_islandora and this is an exhibit node, add our exhibit js
+  // and css.
+  if (module_exists('bc_islandora') && isset($vars['node']) && $vars['node']->type == 'exhibition') {
     drupal_add_js(drupal_get_path('module', 'bc_islandora') . '/js/dc_exhibit.js');
     drupal_add_css(drupal_get_path('module', 'bc_islandora') . '/css/dc_exhibit.css');
   }
 }
 
+/**
+ * Implements hook_preprocess_node().
+ */
 function barnard_theme_preprocess_node(&$vars) {
   $node = $vars['node'];
-  if ($node->type == 'exhibition') {
+  // If we have bc_islandora and this is an exhibit node, invoke bc_islandora's
+  // exhibit theming method and set $vars['exhibtion'].
+  if (module_exists('bc_islandora') && $node->type == 'exhibition') {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     $vars['exhibition'] = theme('bc_islandora_exhibition', array('node' => $node));
   }
 }
 
-function barnard_theme_preprocess_islandora_basic_collection_wrapper(&$variables) {
-  // TODO check: is this a pub?
-  $object = $variables['islandora_object'];
-  $collection_results = $object->relationships->get(FEDORA_RELS_EXT_URI, 'isMemberOf');
-  $cm_results = $object->relationships->get(FEDORA_MODEL_URI, 'hasModel');
-  $mods = isset($object['MODS']) ? simplexml_load_string($object['MODS']->getContent(NULL)) : NULL;
-  $identifier = (string) $mods->identifier;
-  $id_prefix = preg_replace('/^BC/', '', array_shift(explode('-', array_shift(explode('_', $identifier)))));
+/**
+ * Implements hook_preprocess_islandora_basic_collection_wrapper().
+ */
+function barnard_theme_preprocess_islandora_basic_collection_wrapper(&$vars) {
+  $object = $vars['islandora_object'];
+  if (isset($object['MODS']) && $mods = simplexml_load_string($object['MODS']->getContent(NULL))) {
+    $identifier = (string) $mods->identifier;
+    $id_prefix = preg_replace('/^BC/', '', array_shift(explode('-', array_shift(explode('_', $identifier)))));
 
-  if ($variables['islandora_object']->id == variable_get('bc_islandora_student_pubs_pid', 'islandora:1022') || $id_prefix == '12') {
-    $variables['student_pubs'] = TRUE;
+    // If this is a BC12 object, $vars['student_pubs'] is TRUE.
+    if ($object->id == variable_get('bc_islandora_student_pubs_pid', 'islandora:1022') || $id_prefix == '12') {
+      $vars['student_pubs'] = TRUE;
+    }
   }
 }
 
+/**
+ * Implements hook_preprocess_islandora_newspaper_page().
+ */
 function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
   $object = $vars['object'];
-  $issue = islandora_object_load(islandora_newspaper_get_issue($object));
-  if (module_exists('bc_islandora')) {
+  // If we have bc_islandora and can get $issue, use our special newspaper page
+  // theme function to set $vars['content'].
+  if (module_exists('bc_islandora') && $issue = islandora_object_load(islandora_newspaper_get_issue($object))) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     $page_number = _bc_islandora_get_sequence($object);
     $vars['content'] = theme('bc_islandora_newspaper_page', array('object' => $object));
   }
 }
 
+/**
+ * Implements hook_preprocess_islandora_newspaper_issue().
+ */
 function barnard_theme_preprocess_islandora_newspaper_issue(&$vars) {
   if (module_exists('bc_islandora')) {
     $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $vars['object']));
@@ -193,11 +218,17 @@ function barnard_theme_preprocess_islandora_newspaper_issue(&$vars) {
   }
 }
 
+/**
+ * Implements hook_preprocess_islandora_book_book().
+ */
 function barnard_theme_preprocess_islandora_book_book(&$vars) {
   $object = $vars['object'];
   if (module_exists('bc_islandora')) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    // Provide a link to this object's PDF datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF'));
+    // If this object's parent collection's pid is the same as our database
+    // variable bc_islandora_documents_pid, the answer is YES.
     if (_bc_islandora_is_document($object)) {
       drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
       $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $object));
@@ -205,22 +236,28 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
   }
 }
 
+/**
+ * Implements hook_preprocess_islandora_book_page().
+ */
 function barnard_theme_preprocess_islandora_book_page(&$vars) {
   $object = $vars['object'];
   if (module_exists('bc_islandora')) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    // Provide a link to this object's JPG datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('JPG'));
   }
 }
 
+/**
+ * Implements hook_preprocess_islandora_large_image().
+ */
 function barnard_theme_preprocess_islandora_large_image(&$vars) {
   if (module_exists('bc_islandora')) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    // Provide a link to this object's JPG datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($vars['islandora_object'], array('JPG'));
   }
 }
-
-
 
 /**
  * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
@@ -234,7 +271,6 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
     $search_results['object_url_params']['solr']['params'] = array('defType' => 'dismax');
   }
 }
-
 
 /**
  * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().

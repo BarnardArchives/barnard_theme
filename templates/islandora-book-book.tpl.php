@@ -4,9 +4,7 @@
  * Template file to style output.
  */
 ?>
-<?php if (isset($letter) && $letter): ?>
-
-<?php endif; ?>
+<?php // Provide datastream download links, if available. ?>
 <?php if (isset($dl_links) && !empty($dl_links)): ?>
   <p>
     <strong>Download:</strong>
@@ -23,4 +21,3 @@
     <?php print $metadata; ?>
   </div>
 <?php endif; ?>
-<!-- @todo Add table of metadata values -->
