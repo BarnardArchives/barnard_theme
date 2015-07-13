@@ -4,6 +4,7 @@
  * Template file to style output.
  */
 ?>
+<?php // Provide datastream download links, if available. ?>
 <?php if (isset($dl_links)): ?>
   <p>
     <strong>Download:</strong>

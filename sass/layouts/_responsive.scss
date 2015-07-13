@@ -95,7 +95,7 @@ $zen-auto-include-item-base: false;
     margin: 0 auto !important;
   }
   #block-views-featured-block {
-    width: 270px !important;
+    max-width: 270px !important;
     right: 50px !important;
     // top: -45px !important;
     top: -95px !important;
