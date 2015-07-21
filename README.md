@@ -5,12 +5,9 @@ Custom visual design and template logic for [Barnard Digital Collections](http:/
 # Dependencies
 
 * [bc_islandora](http://github.com/BarnardArchives/bc_islandora)
+* [Compass](http://compass-style.org/)
 * [Service links](https://www.drupal.org/project/service_links)
 * [Zen](https://www.drupal.org/project/zen)
-
-# CSS
-
-The theme's CSS is generated via [Sass](http://sass-lang.com/) and [Compass](http://compass-style.org/).
 
 # Template logic
 
