@@ -27,18 +27,18 @@ The theme implements [preprocess functions](https://www.drupal.org/node/223430) 
 * `barnard_theme_preprocess_islandora_newspaper_issue()`
   * If `bc_islandora` exists, invokes `theme_bc_islandora_newspaper_issue()`.
 * `barnard_theme_preprocess_islandora_book_book()`
-  * If `bc_islandora` links, provides alternate download links via `_bc_islandora_dl_links()`.
+  * If `bc_islandora` exists, provides alternate download links via `_bc_islandora_dl_links()`.
   * Unused feature: checks whether the book is actually a "document" (`_bc_islandora_is_document()`) and themes as a newspaper issue if so.
 * `barnard_theme_preprocess_islandora_book_page()`
-  * If `bc_islandora` links, provides alternate download links via `_bc_islandora_dl_links()`.
+  * If `bc_islandora` exists, provides alternate download links via `_bc_islandora_dl_links()`.
 * `barnard_theme_preprocess_islandora_large_image()`
-  * If `bc_islandora` links, provides alternate download links via `_bc_islandora_dl_links()`.
+  * If `bc_islandora` exists, provides alternate download links via `_bc_islandora_dl_links()`.
 * `barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_result_alter()`
   * Prevents a long list of query parameters from being included in search result URLs.
 * `barnard_theme_islandora_bookCModel_islandora_solr_object_result_alter()`
   * Add page viewing fragment and search term to show all search results within book on page load.
 * `barnard_theme_islandora_pageCModel_islandora_solr_object_result_alter()`
-  *  * Replaces the url for the search result to be the book's url, not the page. The page is added as a fragment at the end of the book url.
+  * Replaces the url for the search result to be the book's url, not the page. The page is added as a fragment at the end of the book url.
 
 # To do
 
