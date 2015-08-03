@@ -27,8 +27,8 @@
     <?php print theme('islandora_newspaper_page_controls', array('object' => $object)); ?>
   </div>
   <div class="islandora-newspaper-content-wrapper clearfix">
-    <?php if ($content): ?>
-      <?php print $content; ?>
+    <?php if ($viewer): ?>
+      <?php print $viewer; ?>
     <?php endif; ?>
   </div>
 </div>

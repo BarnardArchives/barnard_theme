@@ -201,8 +201,7 @@ function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
   // theme function to set $vars['content'].
   if (module_exists('bc_islandora') && $issue = islandora_object_load(islandora_newspaper_get_issue($object))) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
-    $page_number = _bc_islandora_get_sequence($object);
-    $vars['content'] = theme('bc_islandora_newspaper_page', array('object' => $object));
+    $vars['viewer'] = theme('bc_islandora_newspaper_page', array('object' => $object));
   }
 }
 
