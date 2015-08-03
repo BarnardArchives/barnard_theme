@@ -197,11 +197,11 @@ function barnard_theme_preprocess_islandora_basic_collection_wrapper(&$vars) {
  */
 function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
   $object = $vars['object'];
-  // If we have bc_islandora, use our special newspaper page theme function to
-  // set $vars['content'].
-  if (module_exists('bc_islandora')) {
+  // If we have bc_islandora and can get $issue, use our special newspaper page
+  // theme function to set $vars['content'].
+  if (module_exists('bc_islandora') && $issue = islandora_object_load(islandora_newspaper_get_issue($object))) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
-    $vars['content'] = theme('bc_islandora_newspaper_page', array('object' => $object));
+    $vars['viewer'] = theme('bc_islandora_newspaper_page', array('object' => $object));
   }
 }
 
@@ -211,6 +211,9 @@ function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
 function barnard_theme_preprocess_islandora_newspaper_issue(&$vars) {
   if (module_exists('bc_islandora')) {
     $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $vars['object']));
+  }
+  if (module_exists('service_links')) {
+    $vars['service_links'] = service_links_render(NULL);
   }
 }
 
