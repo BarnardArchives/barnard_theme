@@ -157,7 +157,7 @@ function barnard_theme_preprocess_page(&$vars) {
   }
   // If we have bc_islandora and this is an exhibit node, add our exhibit js
   // and css.
-  if (module_exists('bc_islandora') && isset($vars['node']) && $vars['node']->type == 'exhibition') {
+  if (module_exists('bc_islandora') && ((isset($vars['node']) && $vars['node']->type == 'exhibition') || (count(arg()) == 1 && arg(0) == 'exhibits'))) {
     drupal_add_js(drupal_get_path('module', 'bc_islandora') . '/js/dc_exhibit.js');
     drupal_add_css(drupal_get_path('module', 'bc_islandora') . '/css/dc_exhibit.css');
   }
@@ -197,9 +197,9 @@ function barnard_theme_preprocess_islandora_basic_collection_wrapper(&$vars) {
  */
 function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
   $object = $vars['object'];
-  // If we have bc_islandora and can get $issue, use our special newspaper page
-  // theme function to set $vars['content'].
-  if (module_exists('bc_islandora') && $issue = islandora_object_load(islandora_newspaper_get_issue($object))) {
+  // If we have bc_islandora, use our special newspaper page theme function to
+  // set $vars['viewer'].
+  if (module_exists('bc_islandora')) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     $vars['viewer'] = theme('bc_islandora_newspaper_page', array('object' => $object));
   }
