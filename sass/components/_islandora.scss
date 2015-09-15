@@ -213,3 +213,18 @@ div.results {
 body.page-islandora-search div.results {
 	display: block;
 }
+
+// Permalink
+.permalink {
+	margin-top: 25px;
+	.permalink-wrapper {
+		display: inline;
+	}
+	.permalink-input {
+		margin-right: 3px;
+	}
+	label {
+		display: inline;
+		margin-right: 10px;
+	}
+}
