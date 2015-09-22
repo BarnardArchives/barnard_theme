@@ -87,18 +87,25 @@ $zen-auto-include-item-base: false;
     .page__title {
       margin: 0.75em 0 !important;
     }
+    #block-islandora-solr-sort {
+      display: none;
+    }
   }
   .frontpage-panel {
     left: 0 !important;
     top: 1em !important;
     width: 270px !important;
     margin: 0 auto !important;
+    #about {
+      display: none;
+    }
   }
   #block-views-featured-block {
-    max-width: 270px !important;
+    /*max-width: 270px !important;
     right: 50px !important;
     // top: -45px !important;
-    top: -95px !important;
+    top: -95px !important;*/
+    display: none;
   }
   #block-islandora-solr-display-switch {
     top: -17px !important;
