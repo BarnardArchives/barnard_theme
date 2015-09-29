@@ -82,6 +82,10 @@ $zen-auto-include-item-base: false;
     padding-left: 1.25em !important;
     position: relative !important;
   }
+  .front #header,
+  .page-islandora-search #header {
+    display: none;
+  }
   #content {
     clear: both !important;
     .page__title {
@@ -96,8 +100,17 @@ $zen-auto-include-item-base: false;
     top: 1em !important;
     width: 270px !important;
     margin: 0 auto !important;
-    #about {
+    #about-main {
       display: none;
+    }
+    #about-mobile {
+      display: block !important;
+    }
+    #frontpage-menu-main {
+      display: none !important;
+    }
+    #frontpage-menu-mobile {
+      display: block !important;
     }
   }
   #block-views-featured-block {
@@ -115,6 +128,9 @@ $zen-auto-include-item-base: false;
     top: 0.75em !important;
     width: auto !important;
     padding-bottom: 2.1em !important;
+  }
+  .islandora-solr-range-slider {
+    display: none;
   }
 }
 
