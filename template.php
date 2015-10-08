@@ -196,31 +196,6 @@ function barnard_theme_preprocess_islandora_basic_collection_wrapper(&$vars) {
 }
 
 /**
- * Implements hook_preprocess_islandora_newspaper_page().
- */
-function barnard_theme_preprocess_islandora_newspaper_page(&$vars) {
-  $object = $vars['object'];
-  // If we have bc_islandora, use our special newspaper page theme function to
-  // set $vars['viewer'].
-  if (module_exists('bc_islandora')) {
-    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
-    $vars['viewer'] = theme('bc_islandora_newspaper_page', array('object' => $object));
-  }
-}
-
-/**
- * Implements hook_preprocess_islandora_newspaper_issue().
- */
-function barnard_theme_preprocess_islandora_newspaper_issue(&$vars) {
-  if (module_exists('bc_islandora')) {
-    $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $vars['object']));
-  }
-  if (module_exists('service_links')) {
-    $vars['service_links'] = service_links_render(NULL);
-  }
-}
-
-/**
  * Implements hook_preprocess_islandora_book_book().
  */
 function barnard_theme_preprocess_islandora_book_book(&$vars) {

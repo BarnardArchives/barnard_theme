@@ -14,7 +14,7 @@
   </span>
   <?php // This theme—with the bc_islandora module—provides a $viewer for ?>
   <?php // showing newspapers via OpenSeadragon. ?>
-  <?php if ($viewer_id == 'islandora_internet_archive_bookreader' || module_exists('bc_islandora')): ?>
+  <?php if ($viewer_id == 'islandora_internet_archive_bookreader' || isset($viewer)): ?>
     <?php print $viewer; ?>
   <?php else: ?>
     <?php print theme('islandora_objects', array('objects' => $pages)); ?>
