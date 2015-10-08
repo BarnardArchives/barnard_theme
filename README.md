@@ -22,10 +22,6 @@ The theme implements [preprocess functions](https://www.drupal.org/node/223430) 
   * If `bc_islandora` exists and the node is an exhibit, invokes `theme_bc_islandora_exhibition()`.
 * `barnard_theme_preprocess_islandora_basic_collection_wrapper()`
   * If the object is a student publication, sets a special variable.
-* `barnard_theme_preprocess_islandora_newspaper_page()`
-  * If `bc_islandora` exists, invokes `theme_bc_islandora_newspaper_page()`.
-* `barnard_theme_preprocess_islandora_newspaper_issue()`
-  * If `bc_islandora` exists, invokes `theme_bc_islandora_newspaper_issue()`.
 * `barnard_theme_preprocess_islandora_book_book()`
   * If `bc_islandora` exists, provides alternate download links via `_bc_islandora_dl_links()`.
   * Unused feature: checks whether the book is actually a "document" (`_bc_islandora_is_document()`) and themes as a newspaper issue if so.
