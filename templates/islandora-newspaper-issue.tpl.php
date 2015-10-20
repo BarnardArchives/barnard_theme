@@ -12,7 +12,7 @@
       <?php print theme('islandora_newspaper_issue_navigator', array('object' => $object)); ?>
     <?php endif; ?>
   </span>
-  <?php // This theme—with the bc_islandora module—provides a $viewer for ?>
+  <?php // The islandora_openseadragon_paged module provides a $viewer for ?>
   <?php // showing newspapers via OpenSeadragon. ?>
   <?php if ($viewer_id == 'islandora_internet_archive_bookreader' || isset($viewer)): ?>
     <?php print $viewer; ?>
