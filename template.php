@@ -162,7 +162,11 @@ function barnard_theme_preprocess_page(&$vars) {
     drupal_add_css(drupal_get_path('module', 'bc_islandora') . '/css/dc_exhibit.css');
   }
   if (arg(0) == 'islandora' && arg(1) == 'object') {
+    drupal_add_js(array('permalink_path' => $_GET['q']), 'setting');
     drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/permalink.js');
+  }
+  if (arg(0) == 'islandora' && arg(1) == 'search') {
+    drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/hide_datepicker.js');
   }
 }
 
