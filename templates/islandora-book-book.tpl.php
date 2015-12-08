@@ -18,6 +18,7 @@
 <?php endif; ?>
 <?php if (isset($metadata) && !empty($metadata)): ?>
   <div class="islandora-large-image-metadata">
+    <?php print $description; ?>
     <?php print $metadata; ?>
   </div>
 <?php endif; ?>
