@@ -135,6 +135,9 @@ function barnard_theme_preprocess_block(&$variables, $hook) {
  * Implements hook_preprocess_page().
  */
 function barnard_theme_preprocess_page(&$vars) {
+  if (isset($vars['node'])) {
+    $vars['theme_hook_suggestions'][] = 'page__node__' . $vars['node']->type;
+  }
   // If we have bc_islandora and this is the front page, invoke
   // _bc_islandora_featured() and set  $vars['page']['footer']['front_caption'].
   if (module_exists('bc_islandora') && $vars['is_front']) {
