@@ -290,10 +290,34 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
   $query = trim($query_processor->solrQuery);
   if (empty($query)) {
     unset($search_results['object_url_params']['solr']);
+    return; // Leave function.
   }
-  else {
+
+  // Ben likes this code but wants to do it a different way. This is working for now, but will be changed.
+  $field_match = array(
+    'catch_all_fields_mt',
+    'OCR_t',
+    'text_nodes_HOCR_hlt',
+  );
+
+  $field_term = '';
+  $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
+  foreach ($fields as $field) {
+    if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
+      if (isset($matches[1]) && in_array($matches[1], $field_match)) {
+        $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
+        break;
+      }
+    }
+  }
+
+  if ($field_term) {
+    $search_term = trim($field_term);
     $search_results['object_url_params']['solr']['params'] = array('defType' => 'dismax');
+    $search_results['object_url_params']['solr']['query'] = $search_term;
   }
+
+  // dpm($search_results);
 }
 
 /**
