@@ -208,12 +208,6 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     // Provide a link to this object's PDF datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF'));
-    // If this object's parent collection's pid is the same as our database
-    // variable bc_islandora_documents_pid, the answer is YES.
-    if (_bc_islandora_is_document($object)) {
-      drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
-      $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $object));
-    }
   }
 }
 
@@ -237,6 +231,55 @@ function barnard_theme_preprocess_islandora_large_image(&$vars) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     // Provide a link to this object's JPG datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($vars['islandora_object'], array('JPG'));
+  }
+}
+
+/**
+ * Implements hook_preprocess_islandora_manuscript_manuscript().
+ */
+function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
+  module_load_include('inc', 'islandora_paged_content', 'includes/utilities');
+  $object = $vars['object'];
+  $pages_ocr = '';
+ 
+  if ($pages = islandora_paged_content_get_pages($object)) {
+    $i = 1;
+    foreach ($pages as $pid => $page) {
+      if ($page_obj = islandora_object_load($pid)) {
+        if (isset($page_obj['OCR'])) {
+          $pages_ocr[] = $page_obj['OCR']->getContent(NULL);
+        }
+      }
+    }
+  }
+
+  if (!empty($pages_ocr)) {
+    $vars['ms_transcript'] = $pages_ocr;
+  }
+
+  if (isset($object['OCR'])) {
+    drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/manuscript.js');
+  }
+  if (module_exists('bc_islandora')) {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    $vars['dl_links'] = _bc_islandora_dl_links($object, array('OCR'));
+    $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
+  }
+}
+
+/**
+ * Implements hook_preprocess_islandora_manuscript_page().
+ */
+function barnard_theme_preprocess_islandora_manuscript_page(&$vars) {
+  $object = $vars['object'];
+  if (isset($object['OCR'])) {
+    $vars['ms_transcript'] = $object['OCR']->getContent(NULL);
+    drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/manuscript.js');
+  }
+  if (module_exists('bc_islandora')) {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    $vars['dl_links'] = _bc_islandora_dl_links($object, array('OCR'));
+    $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
   }
 }
 
