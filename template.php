@@ -135,9 +135,6 @@ function barnard_theme_preprocess_block(&$variables, $hook) {
  * Implements hook_preprocess_page().
  */
 function barnard_theme_preprocess_page(&$vars) {
-  if (isset($vars['node'])) {
-    $vars['theme_hook_suggestions'][] = 'page__node__' . $vars['node']->type;
-  }
   // If we have bc_islandora and this is the front page, invoke
   // _bc_islandora_featured() and set  $vars['page']['footer']['front_caption'].
   if (module_exists('bc_islandora') && $vars['is_front']) {
@@ -241,35 +238,34 @@ function barnard_theme_preprocess_islandora_large_image(&$vars) {
  */
 function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
   $query = trim($query_processor->solrQuery);
-  
   if (empty($query)) {
     unset($search_results['object_url_params']['solr']);
+    return; // Leave function.
   }
-  else {
+
+  // Ben likes this code but wants to do it a different way. This is working for now, but will be changed.
+  $field_match = array(
+    'catch_all_fields_mt',
+    'OCR_t',
+    'text_nodes_HOCR_hlt',
+  );
+
+  $field_term = '';
+  $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
+  foreach ($fields as $field) {
+    if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
+      if (isset($matches[1]) && in_array($matches[1], $field_match)) {
+        $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
+        break;
+      }
+    }
+  }
+
+  if ($field_term) {
+    $search_term = trim($field_term);
     $search_results['object_url_params']['solr']['params'] = array('defType' => 'dismax');
+    $search_results['object_url_params']['solr']['query'] = $search_term;
   }
-
-  // $field_match = array(
-  //   'catch_all_fields_mt',
-  //   'OCR_t',
-  //   'text_nodes_HOCR_hlt',
-  // );
-
-  // $field_term = '';
-  // $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
-  // foreach ($fields as $field) {
-  //   if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
-  //     if (isset($matches[1]) && in_array($matches[1], $field_match)) {
-  //       $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
-  //       break;
-  //     }
-  //   }
-  // }
-  // // dpm($field_term);
-  // if ($field_term) {
-  //   $search_term = trim($field_term);
-  //   $search_results['object_url_params']['solr']['query'] = $search_term;
-  // }
 
   // dpm($search_results);
 }
