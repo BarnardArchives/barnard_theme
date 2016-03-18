@@ -208,12 +208,8 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     // Provide a link to this object's PDF datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF'));
-    // If this object's parent collection's pid is the same as our database
-    // variable bc_islandora_documents_pid, the answer is YES.
-    if (_bc_islandora_is_document($object)) {
-      drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
-      $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $object));
-    }
+    drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
+    $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $object));
   }
 }
 
