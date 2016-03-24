@@ -240,7 +240,8 @@ function barnard_theme_preprocess_islandora_large_image(&$vars) {
 function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
   module_load_include('inc', 'islandora_paged_content', 'includes/utilities');
   $object = $vars['object'];
-  $pages_ocr = '';
+  $pages_ocr = array();
+  $pages_hocr = array();
  
   if ($pages = islandora_paged_content_get_pages($object)) {
     $i = 1;
@@ -249,12 +250,19 @@ function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
         if (isset($page_obj['OCR'])) {
           $pages_ocr[] = $page_obj['OCR']->getContent(NULL);
         }
+        if (isset($page_obj['HOCR'])) {
+          $hocr = simplexml_load_string($page_obj['HOCR']->getContent(NULL));
+          $pages_hocr[] = $hocr->body->asXML();
+        }
       }
     }
   }
 
   if (!empty($pages_ocr)) {
     $vars['ms_transcript'] = $pages_ocr;
+  }
+  if (!empty($pages_hocr)) {
+    $vars['HOCR'] = $pages_hocr;
   }
 
   if (isset($object['OCR'])) {

@@ -29,9 +29,14 @@
     </div>
     <?php if (isset($ms_transcript) && !empty($ms_transcript)): ?>
       <div id="manuscript-viewer-transcript-pane">
-        <?php foreach($ms_transcript as $i => $ms_page): ?>
+        <?php // foreach($ms_transcript as $i => $ms_page): ?>
+          <!-- <div class="manuscript-transcript-page" id="page-<?php // print $i + 1; ?>">
+            <pre><?php // print $ms_page; ?></pre>
+          </div> -->
+        <?php // endforeach; ?>
+        <?php foreach($HOCR as $i => $hocr_page): ?>
           <div class="manuscript-transcript-page" id="page-<?php print $i + 1; ?>">
-            <pre><?php print $ms_page; ?></pre>
+            <?php print $hocr_page; ?>
           </div>
         <?php endforeach; ?>
       </div>
