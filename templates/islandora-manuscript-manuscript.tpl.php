@@ -29,21 +29,26 @@
     </div>
     <?php if (isset($ms_transcript) && !empty($ms_transcript)): ?>
       <div id="manuscript-viewer-transcript-pane">
-        <?php if (isset($HOCR) && !empty($HOCR)): ?>
-          <?php foreach ($HOCR as $i => $hocr_page): ?>
-            <div class="manuscript-transcript-page" id="page-<?php print $i + 1; ?>">
-              <?php print $hocr_page; ?>
-            </div>
-          <?php endforeach; ?>
-        <?php else: ?>
+        <?php //if (isset($HOCR) && !empty($HOCR)): ?>
+          <?php //foreach ($HOCR as $i => $hocr_page): ?>
+            <!-- <div class="manuscript-transcript-page" id="page-<?php //print $i + 1; ?>">-->
+              <?php //print $hocr_page; ?>
+            <!--</div>-->
+          <?php //endforeach; ?>
+        <?php //else: ?>
           <?php foreach($ms_transcript as $i => $ms_page): ?>
             <div class="manuscript-transcript-page" id="page-<?php print $i + 1; ?>">
               <pre><?php print $ms_page; ?></pre>
             </div>
           <?php endforeach; ?>
-        <?php endif; ?>
+        <?php //endif; ?>
       </div>
     <?php endif; ?>
   </div>
 <?php endif; ?>
-<!-- @todo Add table of metadata values -->
+<!-- Add table of metadata values -->
+<?php if (isset($metadata) && !empty($metadata)): ?>
+  <div id="manuscript-metadata">
+    <?php print $metadata; ?>
+  </div>
+<?php endif; ?>

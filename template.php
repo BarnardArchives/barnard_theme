@@ -239,7 +239,12 @@ function barnard_theme_preprocess_islandora_large_image(&$vars) {
  */
 function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
   module_load_include('inc', 'islandora_paged_content', 'includes/utilities');
+  module_load_include('inc', 'islandora', 'includes/metadata');
+  drupal_add_js('misc/form.js');
+  drupal_add_js('misc/collapse.js');
+
   $object = $vars['object'];
+  $vars['metadata'] = islandora_retrieve_metadata_markup($object);
   $pages_ocr = array();
   $pages_hocr = array();
  
@@ -248,7 +253,15 @@ function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
     foreach ($pages as $pid => $page) {
       if ($page_obj = islandora_object_load($pid)) {
         if (isset($page_obj['OCR'])) {
-          $pages_ocr[] = $page_obj['OCR']->getContent(NULL);
+          $page_ocr = $page_obj['OCR']->getContent(NULL);
+          $page_grafs = explode("\n\n", $page_ocr);
+          $new_grafs = array();
+          foreach ($page_grafs as $i => $graf) {
+            $new_grafs[$i] = preg_replace("/\n/", ' ', $graf);
+          }
+          // $pages_ocr[] = preg_replace('/\n(?!\n)/', ' ', trim($page_ocr));
+          // $pages_ocr[] = $page_ocr;
+          $pages_ocr[] = implode("\n\n", $new_grafs);
         }
         if (isset($page_obj['HOCR'])) {
           $hocr = simplexml_load_string($page_obj['HOCR']->getContent(NULL));
