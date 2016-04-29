@@ -243,12 +243,15 @@ body.page-islandora-search div.results {
 	margin-bottom: 10px;
 	#manuscript-viewer-transcript-pane {
 		float: left;
-  		width: 49%;
 		overflow: scroll;
 		margin-right: 20px;
   		max-height: 500px;
   		font-size: 12px;
   		.manuscript-transcript-page {
+  			display: none;
+  			.active {
+  				display: block;
+  			}
   			pre {
   				font-size: 1.4em;
   			}
@@ -256,6 +259,6 @@ body.page-islandora-search div.results {
 	}
 	#manuscript-viewer-osd-pane {
 		float: left;
-		width: 49%;
+		width: 90%;
 	}
 }

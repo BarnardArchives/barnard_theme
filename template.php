@@ -242,6 +242,7 @@ function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
   module_load_include('inc', 'islandora', 'includes/metadata');
   drupal_add_js('misc/form.js');
   drupal_add_js('misc/collapse.js');
+  drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/manuscript.js');
 
   $object = $vars['object'];
   $vars['metadata'] = islandora_retrieve_metadata_markup($object);
@@ -263,10 +264,6 @@ function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
           // $pages_ocr[] = $page_ocr;
           $pages_ocr[] = implode("\n\n", $new_grafs);
         }
-        if (isset($page_obj['HOCR'])) {
-          $hocr = simplexml_load_string($page_obj['HOCR']->getContent(NULL));
-          $pages_hocr[] = $hocr->body->asXML();
-        }
       }
     }
   }
@@ -274,16 +271,10 @@ function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
   if (!empty($pages_ocr)) {
     $vars['ms_transcript'] = $pages_ocr;
   }
-  if (!empty($pages_hocr)) {
-    $vars['HOCR'] = $pages_hocr;
-  }
 
-  if (isset($object['OCR'])) {
-    drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/manuscript.js');
-  }
   if (module_exists('bc_islandora')) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
-    $vars['dl_links'] = _bc_islandora_dl_links($object, array('OCR'));
+    $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF', 'TRANSCRIPT'));
     $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
   }
 }

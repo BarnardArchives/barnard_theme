@@ -19,7 +19,7 @@
 <?php endif; ?>
 <?php if (isset($ms_transcript)): ?>
   <p>
-    <a id="manuscript-transcript-toggle" href="#">Hide transcript</a>
+    <a id="manuscript-transcript-toggle" href="#">Show transcript</a>
   </p>
 <?php endif; ?>
 <?php if (isset($viewer)): ?>

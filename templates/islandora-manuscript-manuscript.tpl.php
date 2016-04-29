@@ -19,7 +19,7 @@
 <?php endif; ?>
 <?php if (isset($ms_transcript)): ?>
   <p>
-    <a id="manuscript-transcript-toggle" href="#">Hide transcript</a>
+    <a id="manuscript-transcript-toggle" href="#">Show transcript</a>
   </p>
 <?php endif; ?>
 <?php if (isset($viewer)): ?>
@@ -29,13 +29,6 @@
     </div>
     <?php if (isset($ms_transcript) && !empty($ms_transcript)): ?>
       <div id="manuscript-viewer-transcript-pane">
-        <?php //if (isset($HOCR) && !empty($HOCR)): ?>
-          <?php //foreach ($HOCR as $i => $hocr_page): ?>
-            <!-- <div class="manuscript-transcript-page" id="page-<?php //print $i + 1; ?>">-->
-              <?php //print $hocr_page; ?>
-            <!--</div>-->
-          <?php //endforeach; ?>
-        <?php //else: ?>
           <?php foreach($ms_transcript as $i => $ms_page): ?>
             <div class="manuscript-transcript-page" id="page-<?php print $i + 1; ?>">
               <pre><?php print $ms_page; ?></pre>

@@ -5,6 +5,7 @@
                 event.preventDefault();
                 if ($("#manuscript-viewer-transcript-pane").css("display") == "none") {
                     $("#manuscript-viewer-osd-pane").width("49%");
+                    $("#manuscript-viewer-transcript-pane").width("49%");
                 }
                 else {
                     // XXX: Should be something more like
@@ -29,6 +30,8 @@
                 $(this).hide();
             });
             $('.manuscript-transcript-page').first().addClass('active').show();
+            // NB this only works because islandora uses outdated OpenSeadragon.
+            // Might need to change in the future...
             settings.islandora_open_seadragon_viewer.onPageChange = function(event) {
                 var target_page = event.page + 1;
                 console.log('got target page: ' + target_page);
