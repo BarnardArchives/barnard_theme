@@ -26,6 +26,7 @@
 
     Drupal.behaviors.bc_manuscript_transcript_page = {
         attach: function (context, settings) {
+            $('#manuscript-viewer-transcript-pane').hide();
             $('.manuscript-transcript-page').each(function() {
                 $(this).hide();
             });

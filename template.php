@@ -260,8 +260,6 @@ function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
           foreach ($page_grafs as $i => $graf) {
             $new_grafs[$i] = preg_replace("/\n/", ' ', $graf);
           }
-          // $pages_ocr[] = preg_replace('/\n(?!\n)/', ' ', trim($page_ocr));
-          // $pages_ocr[] = $page_ocr;
           $pages_ocr[] = implode("\n\n", $new_grafs);
         }
       }
@@ -290,9 +288,19 @@ function barnard_theme_preprocess_islandora_manuscript_page(&$vars) {
   }
   if (module_exists('bc_islandora')) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
-    $vars['dl_links'] = _bc_islandora_dl_links($object, array('OCR'));
+    $vars['dl_links'] = _bc_islandora_dl_links($object, array('Transcript'));
     $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
   }
+}
+
+/**
+ * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
+ */
+function barnard_theme_islandora_manuscriptpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+  $search_results['object_url_params']['solr'] = array(
+    'query' => $query_processor->solrQuery,
+    'params' => $query_processor->solrParams,
+  );
 }
 
 /**
@@ -328,8 +336,6 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
     $search_results['object_url_params']['solr']['params'] = array('defType' => 'dismax');
     $search_results['object_url_params']['solr']['query'] = $search_term;
   }
-
-  // dpm($search_results);
 }
 
 /**
