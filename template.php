@@ -136,7 +136,8 @@ function barnard_theme_preprocess_block(&$variables, $hook) {
  */
 function barnard_theme_preprocess_page(&$vars) {
   if (isset($vars['node'])) {
-    $vars['theme_hook_suggestions'][] = 'page__node__' . $vars['node']->type;
+    $node = $vars['node'];
+    $vars['theme_hook_suggestions'][] = 'page__node__' . $node->type;
   }
   // If we have bc_islandora and this is the front page, invoke
   // _bc_islandora_featured() and set  $vars['page']['footer']['front_caption'].
@@ -151,9 +152,13 @@ function barnard_theme_preprocess_page(&$vars) {
   // If we have bc_islandora, this is NOT the front page, and this is not a
   // search result page, call bc_islandora's custom breadcrumb theming method
   // and set $vars['bc_breadcrumb'].
-  if (module_exists('bc_islandora') && !$vars['is_front'] && arg(1) != 'search') {
+  if (isset($node) && $node->type == 'islandora_solr_content_type') {
+    $vars['bc_breadcrumb'] = theme('bc_islandora_breadcrumb', array('breadcrumb' => menu_get_active_breadcrumb()));
+  }
+  elseif (module_exists('bc_islandora') && !$vars['is_front'] && arg(1) != 'search') {
     $vars['bc_breadcrumb'] = theme('bc_islandora_breadcrumb', array('breadcrumb' => array()));
   }
+
   // If we have service_links, set $vars['socialmedia'].
   if (module_exists('service_links') && _service_links_match_path()) {
     $vars['socialmedia'] = implode('', service_links_render(NULL));
