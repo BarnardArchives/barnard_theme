@@ -213,11 +213,8 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     // Provide a link to this object's PDF datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF'));
-<<<<<<< HEAD
     drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
     $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $object));
-=======
->>>>>>> 0a946e0
   }
 }
 
@@ -326,7 +323,6 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
   if (empty($query)) {
     unset($search_results['object_url_params']['solr']);
     return; // Leave function.
-<<<<<<< HEAD
   }
 
   // Ben likes this code but wants to do it a different way. This is working for now, but will be changed.
@@ -347,9 +343,6 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
     }
   }
 
-=======
-  }
-
   // Ben likes this code but wants to do it a different way. This is working for now, but will be changed.
   $field_match = array(
     'catch_all_fields_mt',
@@ -368,14 +361,11 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
     }
   }
 
->>>>>>> 0a946e0
   if ($field_term) {
     $search_term = trim($field_term);
     $search_results['object_url_params']['solr']['params'] = array('defType' => 'dismax');
     $search_results['object_url_params']['solr']['query'] = $search_term;
   }
-
-  // dpm($search_results);
 }
 
 /**
