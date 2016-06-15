@@ -135,6 +135,10 @@ function barnard_theme_preprocess_block(&$variables, $hook) {
  * Implements hook_preprocess_page().
  */
 function barnard_theme_preprocess_page(&$vars) {
+  if (isset($vars['node'])) {
+    $node = $vars['node'];
+    $vars['theme_hook_suggestions'][] = 'page__node__' . $node->type;
+  }
   // If we have bc_islandora and this is the front page, invoke
   // _bc_islandora_featured() and set  $vars['page']['footer']['front_caption'].
   if (module_exists('bc_islandora') && $vars['is_front']) {
@@ -148,9 +152,13 @@ function barnard_theme_preprocess_page(&$vars) {
   // If we have bc_islandora, this is NOT the front page, and this is not a
   // search result page, call bc_islandora's custom breadcrumb theming method
   // and set $vars['bc_breadcrumb'].
-  if (module_exists('bc_islandora') && !$vars['is_front'] && arg(1) != 'search') {
+  if (isset($node) && $node->type == 'islandora_solr_content_type') {
+    $vars['bc_breadcrumb'] = theme('bc_islandora_breadcrumb', array('breadcrumb' => menu_get_active_breadcrumb()));
+  }
+  elseif (module_exists('bc_islandora') && !$vars['is_front'] && arg(1) != 'search') {
     $vars['bc_breadcrumb'] = theme('bc_islandora_breadcrumb', array('breadcrumb' => array()));
   }
+
   // If we have service_links, set $vars['socialmedia'].
   if (module_exists('service_links') && _service_links_match_path()) {
     $vars['socialmedia'] = implode('', service_links_render(NULL));
@@ -205,8 +213,11 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
     module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
     // Provide a link to this object's PDF datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF'));
+<<<<<<< HEAD
     drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
     $vars['viewer'] = theme('bc_islandora_newspaper_issue', array('object' => $object));
+=======
+>>>>>>> 0a946e0
   }
 }
 
@@ -234,6 +245,80 @@ function barnard_theme_preprocess_islandora_large_image(&$vars) {
 }
 
 /**
+ * Implements hook_preprocess_islandora_manuscript_manuscript().
+ */
+function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
+  module_load_include('inc', 'islandora_paged_content', 'includes/utilities');
+  module_load_include('inc', 'islandora', 'includes/metadata');
+  drupal_add_js('misc/form.js');
+  drupal_add_js('misc/collapse.js');
+  drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/manuscript.js');
+
+  $object = $vars['object'];
+  $vars['metadata'] = islandora_retrieve_metadata_markup($object);
+  $pages_ocr = array();
+  $pages_hocr = array();
+ 
+  if ($pages = islandora_paged_content_get_pages($object)) {
+    $i = 1;
+    foreach ($pages as $pid => $page) {
+      if ($page_obj = islandora_object_load($pid)) {
+        if (isset($page_obj['OCR'])) {
+          $page_ocr = $page_obj['OCR']->getContent(NULL);
+          $page_grafs = explode("\n\n", $page_ocr);
+          $new_grafs = array();
+          foreach ($page_grafs as $i => $graf) {
+            $new_grafs[$i] = preg_replace("/\n/", ' ', $graf);
+          }
+          $pages_ocr[] = implode("\n\n", $new_grafs);
+        }
+      }
+    }
+  }
+
+  if (!empty($pages_ocr)) {
+    $vars['ms_transcript'] = $pages_ocr;
+  }
+
+  if (module_exists('bc_islandora')) {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF', 'TRANSCRIPT'));
+    if (count(islandora_paged_content_get_pages($object)) > 1) {
+      $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_islandora_manuscript_page().
+ */
+function barnard_theme_preprocess_islandora_manuscript_page(&$vars) {
+  module_load_include('inc', 'islandora_paged_content', 'includes/utilities');
+  $object = $vars['object'];
+  if (isset($object['OCR'])) {
+    $vars['ms_transcript'] = $object['OCR']->getContent(NULL);
+    drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/manuscript.js');
+  }
+  if (module_exists('bc_islandora')) {
+    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    $vars['dl_links'] = _bc_islandora_dl_links($object, array('Transcript'));
+    if (count(islandora_paged_content_get_pages($object)) > 1) {
+      $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
+    }
+  }
+}
+
+/**
+ * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
+ */
+function barnard_theme_islandora_manuscriptpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+  $search_results['object_url_params']['solr'] = array(
+    'query' => $query_processor->solrQuery,
+    'params' => $query_processor->solrParams,
+  );
+}
+
+/**
  * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
  */
 function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
@@ -241,6 +326,7 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
   if (empty($query)) {
     unset($search_results['object_url_params']['solr']);
     return; // Leave function.
+<<<<<<< HEAD
   }
 
   // Ben likes this code but wants to do it a different way. This is working for now, but will be changed.
@@ -261,6 +347,28 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
     }
   }
 
+=======
+  }
+
+  // Ben likes this code but wants to do it a different way. This is working for now, but will be changed.
+  $field_match = array(
+    'catch_all_fields_mt',
+    'OCR_t',
+    'text_nodes_HOCR_hlt',
+  );
+
+  $field_term = '';
+  $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
+  foreach ($fields as $field) {
+    if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
+      if (isset($matches[1]) && in_array($matches[1], $field_match)) {
+        $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
+        break;
+      }
+    }
+  }
+
+>>>>>>> 0a946e0
   if ($field_term) {
     $search_term = trim($field_term);
     $search_results['object_url_params']['solr']['params'] = array('defType' => 'dismax');
