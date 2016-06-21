@@ -142,7 +142,7 @@ function barnard_theme_preprocess_page(&$vars) {
   // If we have bc_islandora and this is the front page, invoke
   // _bc_islandora_featured() and set  $vars['page']['footer']['front_caption'].
   if (module_exists('bc_islandora') && $vars['is_front']) {
-    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    module_load_include('inc', 'bc_islandora', 'includes/theme');
     $vars['page']['footer']['front_caption'] = array(
       '#markup' => _bc_islandora_featured(),
       '#prefix' => '<div id="block-views-featured-block">',
@@ -183,7 +183,7 @@ function barnard_theme_preprocess_node(&$vars) {
   // If we have bc_islandora and this is an exhibit node, invoke bc_islandora's
   // exhibit theming method and set $vars['exhibtion'].
   if (module_exists('bc_islandora') && $node->type == 'exhibition') {
-    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    module_load_include('inc', 'bc_islandora', 'includes/theme');
     $vars['exhibition'] = theme('bc_islandora_exhibition', array('node' => $node));
   }
 }
@@ -210,7 +210,7 @@ function barnard_theme_preprocess_islandora_basic_collection_wrapper(&$vars) {
 function barnard_theme_preprocess_islandora_book_book(&$vars) {
   $object = $vars['object'];
   if (module_exists('bc_islandora')) {
-    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    module_load_include('inc', 'bc_islandora', 'includes/theme');
     // Provide a link to this object's PDF datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF'));
     drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
@@ -224,7 +224,7 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
 function barnard_theme_preprocess_islandora_book_page(&$vars) {
   $object = $vars['object'];
   if (module_exists('bc_islandora')) {
-    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    module_load_include('inc', 'bc_islandora', 'includes/theme');
     // Provide a link to this object's JPG datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('JPG'));
   }
@@ -235,7 +235,7 @@ function barnard_theme_preprocess_islandora_book_page(&$vars) {
  */
 function barnard_theme_preprocess_islandora_large_image(&$vars) {
   if (module_exists('bc_islandora')) {
-    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    module_load_include('inc', 'bc_islandora', 'includes/theme');
     // Provide a link to this object's JPG datastream via $vars['dl_links'].
     $vars['dl_links'] = _bc_islandora_dl_links($vars['islandora_object'], array('JPG'));
   }
@@ -278,7 +278,7 @@ function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
   }
 
   if (module_exists('bc_islandora')) {
-    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
+    module_load_include('inc', 'bc_islandora', 'includes/theme');
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('PDF', 'TRANSCRIPT'));
     if (count(islandora_paged_content_get_pages($object)) > 1) {
       $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
@@ -297,8 +297,8 @@ function barnard_theme_preprocess_islandora_manuscript_page(&$vars) {
     drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/manuscript.js');
   }
   if (module_exists('bc_islandora')) {
-    module_load_include('inc', 'bc_islandora', 'includes/bc_islandora.theme');
-    $vars['dl_links'] = _bc_islandora_dl_links($object, array('Transcript'));
+    module_load_include('inc', 'bc_islandora', 'includes/theme');
+    $vars['dl_links'] = _bc_islandora_dl_links($object, array('TRANSCRIPT'));
     if (count(islandora_paged_content_get_pages($object)) > 1) {
       $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
     }
