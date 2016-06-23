@@ -166,25 +166,11 @@ function barnard_theme_preprocess_page(&$vars) {
   // If we have bc_islandora and this is an exhibit node, add our exhibit js
   // and css.
   if (module_exists('bc_islandora') && ((isset($vars['node']) && $vars['node']->type == 'exhibition') || (count(arg()) == 1 && arg(0) == 'exhibits'))) {
-    drupal_add_js(drupal_get_path('module', 'bc_islandora') . '/js/dc_exhibit.js');
     drupal_add_css(drupal_get_path('module', 'bc_islandora') . '/css/dc_exhibit.css');
   }
   if (arg(0) == 'islandora' && arg(1) == 'object') {
     drupal_add_js(array('permalink_path' => $_GET['q']), 'setting');
     drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/permalink.js');
-  }
-}
-
-/**
- * Implements hook_preprocess_node().
- */
-function barnard_theme_preprocess_node(&$vars) {
-  $node = $vars['node'];
-  // If we have bc_islandora and this is an exhibit node, invoke bc_islandora's
-  // exhibit theming method and set $vars['exhibtion'].
-  if (module_exists('bc_islandora') && $node->type == 'exhibition') {
-    module_load_include('inc', 'bc_islandora', 'includes/theme');
-    $vars['exhibition'] = theme('bc_islandora_exhibition', array('node' => $node));
   }
 }
 
