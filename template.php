@@ -163,11 +163,8 @@ function barnard_theme_preprocess_page(&$vars) {
   if (module_exists('service_links') && _service_links_match_path()) {
     $vars['socialmedia'] = implode('', service_links_render(NULL));
   }
-  // If we have bc_islandora and this is an exhibit node, add our exhibit js
-  // and css.
-  if (module_exists('bc_islandora') && ((isset($vars['node']) && $vars['node']->type == 'exhibition') || (count(arg()) == 1 && arg(0) == 'exhibits'))) {
-    drupal_add_css(drupal_get_path('module', 'bc_islandora') . '/css/dc_exhibit.css');
-  }
+
+  // If this is an islandora object, add permalink js.
   if (arg(0) == 'islandora' && arg(1) == 'object') {
     drupal_add_js(array('permalink_path' => $_GET['q']), 'setting');
     drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/permalink.js');
