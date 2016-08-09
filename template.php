@@ -238,7 +238,7 @@ function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
   $vars['metadata'] = islandora_retrieve_metadata_markup($object);
   $pages_ocr = array();
   $pages_hocr = array();
- 
+
   if ($pages = islandora_paged_content_get_pages($object)) {
     $i = 1;
     foreach ($pages as $pid => $page) {
@@ -282,9 +282,7 @@ function barnard_theme_preprocess_islandora_manuscript_page(&$vars) {
   if (module_exists('bc_islandora')) {
     module_load_include('inc', 'bc_islandora', 'includes/theme');
     $vars['dl_links'] = _bc_islandora_dl_links($object, array('TRANSCRIPT'));
-    if (count(islandora_paged_content_get_pages($object)) > 1) {
-      $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
-    }
+    $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
   }
 }
 
