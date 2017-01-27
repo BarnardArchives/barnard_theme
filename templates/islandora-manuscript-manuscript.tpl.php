@@ -42,6 +42,7 @@
 <!-- Add table of metadata values -->
 <?php if (isset($metadata) && !empty($metadata)): ?>
   <div id="manuscript-metadata">
+    <?php print $description; ?>
     <?php print $metadata; ?>
   </div>
 <?php endif; ?>
