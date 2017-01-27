@@ -236,6 +236,7 @@ function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
 
   $object = $vars['object'];
   $vars['metadata'] = islandora_retrieve_metadata_markup($object);
+  $vars['description'] = islandora_retrieve_description_markup($object);
   $pages_ocr = array();
   $pages_hocr = array();
 
