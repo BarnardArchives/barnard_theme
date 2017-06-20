@@ -44,5 +44,6 @@
   <div id="manuscript-metadata">
     <?php print $description; ?>
     <?php print $metadata; ?>
+    <?php //  dpm($metadata); ?>
   </div>
 <?php endif; ?>
