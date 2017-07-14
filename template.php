@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains the theme's functions to manipulate Drupal's default markup.
@@ -6,7 +7,6 @@
  * Complete documentation for this file is available online.
  * @see https://drupal.org/node/1728096
  */
-
 
 /**
  * Override or insert variables into the maintenance page template.
@@ -155,8 +155,10 @@ function barnard_theme_preprocess_page(&$vars) {
   if (isset($node) && $node->type == 'islandora_solr_content_type') {
     $vars['bc_breadcrumb'] = theme('bc_islandora_breadcrumb', ['breadcrumb' => menu_get_active_breadcrumb()]);
   }
-  elseif (module_exists('bc_islandora') && !$vars['is_front'] && arg(1) != 'search') {
-    $vars['bc_breadcrumb'] = theme('bc_islandora_breadcrumb', ['breadcrumb' => []]);
+  else {
+    if (module_exists('bc_islandora') && !$vars['is_front'] && arg(1) != 'search') {
+      $vars['bc_breadcrumb'] = theme('bc_islandora_breadcrumb', ['breadcrumb' => []]);
+    }
   }
 
   // If we have service_links, set $vars['socialmedia'].
@@ -312,7 +314,8 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
   if (empty($query)) {
     unset($search_results['object_url_params']['solr']);
 
-    return; // Leave function.
+    // Leave function.
+    return;
   }
 
   // Ben likes this code but wants to do it a different way. This is working for now, but will be changed.
@@ -391,8 +394,10 @@ function barnard_theme_islandora_bookCModel_islandora_solr_object_result_alter(&
   if ($field_term) {
     $search_term = trim($field_term);
   }
-  elseif ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
-    $search_term = trim($query_processor->solrQuery);
+  else {
+    if ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
+      $search_term = trim($query_processor->solrQuery);
+    }
   }
 
   $ia_view = variable_get('islandora_internet_archive_bookreader_default_page_view', "1");
@@ -459,8 +464,10 @@ function barnard_theme_islandora_pageCModel_islandora_solr_object_result_alter(&
       if ($field_term) {
         $search_term = trim($field_term);
       }
-      elseif ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
-        $search_term = trim($query_processor->solrQuery);
+      else {
+        if ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
+          $search_term = trim($query_processor->solrQuery);
+        }
       }
 
       if (!empty($search_term)) {
