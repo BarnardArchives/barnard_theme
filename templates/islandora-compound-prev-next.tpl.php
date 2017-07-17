@@ -53,7 +53,7 @@
   <?php if (count($themed_siblings) > 0): ?>
       <div class="islandora-compound-thumbs">
         <?php foreach ($themed_siblings as $sibling): ?>
-            <div class="islandora-compound-thumb">
+            <div class='islandora-compound-thumb <?php print isset($sibling['class'][1]) ? $sibling['class'][1] . ' ' : ''; print isset($sibling['class'][0]) ? $sibling['class'][0] : ''; ?>'>
                 <span class='islandora-compound-caption'><?php print $sibling['label']; ?></span>
               <?php print l(
                 theme_image(
