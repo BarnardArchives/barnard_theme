@@ -2,9 +2,9 @@
 
 /**
  * @file
- * islandora-compound-object-prev-next.tpl.php
+ * Barnard College modified islandora-compound-object-prev-next.tpl.php.
  *
- * @TODO: needs documentation about file and variables
+ * @TODO: needs documentation about file and variables (nah you're good).
  * $parent_label - Title of compound object
  * $child_count - Count of objects in compound object
  * $parent_url - URL to manage compound object
@@ -18,13 +18,21 @@
  *      'TN' => URL of thumbnail or default folder if no datastream,
  *      'class' => array of classes for this sibling,
  *    )
+ *
+ * Barnard Added Variables - @blame br2490 github.
+ * $current_inclusion - you guessed it! the current inclusion. (unused?)
+ * $themed_siblings - (merged with above)
+ *  array(
+ *      'return_page' => return path or (int) for URL fragment generation.
+ * (currently using integers.)
+ *      'inclusion_page' => (int) the page this inclusion is found on in the
+ * parent.
  */
-
 ?>
 <div class="islandora-compound-prev-next">
-     <span class="islandora-compound-title"><?php print t('@objects', ['@objects' => format_plural($child_count, 'Inclusion', 'Inclusions')]); ?><br/>
+     <span class="islandora-compound-title">Inclusions<br/>
        <?php if ($parent_url): ?>
-         <?php print l(t('Manage Compound'), $parent_url); ?>
+         <?php print l(t('manage parent object'), $parent_url); ?>
        <?php endif; ?>
        <?php if ($parent_tn): ?>
          <?php print l(
@@ -39,23 +47,20 @@
          ); ?>
        <?php endif; ?>
  </span><br/>
-
-  <?php if (!empty($previous_pid)): ?>
-    <?php print l(t('Previous'), 'islandora/object/' . $previous_pid); ?>
-  <?php endif; ?>
-  <?php if (!empty($previous_pid) && !empty($next_pid)): ?>
-      |
-  <?php endif; ?>
-  <?php if (!empty($next_pid)): ?>
-    <?php print l(t('Next'), 'islandora/object/' . $next_pid); ?>
-  <?php endif; ?>
-
   <?php if (count($themed_siblings) > 0): ?>
       <div class="islandora-compound-thumbs">
+          <!-- @todo: css, description text, other things at the theme level?-->
+          <span class="islandora-compound-details">Loading inclusions data, please wait...</span>
         <?php foreach ($themed_siblings as $sibling): ?>
-            <div class='islandora-compound-thumb <?php print isset($sibling['class'][1]) ? $sibling['class'][1] . ' ' : ''; print isset($sibling['class'][0]) ? $sibling['class'][0] : ''; ?>'>
+            <div class='islandora-compound-thumb <?php print(implode(" ", $sibling['class'])); ?>'>
                 <span class='islandora-compound-caption'><?php print $sibling['label']; ?></span>
-              <?php print l(
+              <?php
+              // This is relatively Barnard specific because we really want this
+              // collection to ALWAYS be 1up, so I'm hardcoding it everywhere I
+              // can to make it near impossible to undo, because I'm a complete
+              // jerkface like that. @jerk br2490 github!
+              $fragment = (isset($sibling['return_page'])) ? "page/${sibling['return_page']}/mode/1up" : 'page/1/mode/1up';
+              print l(
                 theme_image(
                   [
                     'path' => $sibling['TN'],
@@ -63,7 +68,7 @@
                   ]
                 ),
                 'islandora/object/' . $sibling['pid'],
-                ['html' => TRUE]
+                ['html' => TRUE, 'fragment' => $fragment]
               ); ?>
             </div>
         <?php endforeach; // each themed_siblings ?>
