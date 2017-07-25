@@ -12,6 +12,7 @@
   </p>
 <?php endif; ?>
 <?php if (isset($viewer)): ?>
+  <div id="return-to-page"></div>
   <div id="book-viewer">
     <?php print $viewer; ?>
   </div>

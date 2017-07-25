@@ -4,7 +4,7 @@
  * @file
  * Barnard College modified islandora-compound-object-prev-next.tpl.php.
  *
- * @TODO: needs documentation about file and variables (nah you're good).
+ * @TODO: needs documentation about file and variables
  * $parent_label - Title of compound object
  * $child_count - Count of objects in compound object
  * $parent_url - URL to manage compound object
@@ -56,9 +56,8 @@
                 <span class='islandora-compound-caption'><?php print $sibling['label']; ?></span>
               <?php
               // This is relatively Barnard specific because we really want this
-              // collection to ALWAYS be 1up, so I'm hardcoding it everywhere I
-              // can to make it near impossible to undo, because I'm a complete
-              // jerkface like that. @jerk br2490 github!
+              // collection to ALWAYS be 1up. @jerk br2490 github.
+              // @todo make this an option. pass in. be smart.
               $fragment = (isset($sibling['return_page'])) ? "page/${sibling['return_page']}/mode/1up" : 'page/1/mode/1up';
               print l(
                 theme_image(
