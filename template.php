@@ -490,7 +490,7 @@ function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&
   // return early if key components of the solr result are missing. empty is
   // a nice truthiness test...
   if (empty($search_results['object_url']) || empty($search_results['solr_doc'])) {
-    drupal_set_message('Received an invalid or broken solr_search_results.', 'warning', TRUE);
+    drupal_set_message('Received an invalid or broken solr_search_results.', 'warning', FALSE);
     return;
   }
 
