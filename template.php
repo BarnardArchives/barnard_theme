@@ -175,6 +175,10 @@ function barnard_theme_preprocess_page(&$vars) {
 
 /**
  * Implements hook_preprocess_islandora_basic_collection_wrapper().
+ *
+ * @TODO: we have lots of ways of  determining "is student pub" and other sim
+ * functions. come back here and remove all of this hardcoded checking and turn
+ * to variable_gets OR define a global...
  */
 function barnard_theme_preprocess_islandora_basic_collection_wrapper(&$vars) {
   $object = $vars['islandora_object'];
@@ -217,6 +221,7 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
   module_load_include('inc', 'bc_islandora', 'includes/theme');
   // Provide a link to this object's PDF datastream via $vars['dl_links'].
   $vars['dl_links'] = _bc_islandora_dl_links($object, ['PDF']);
+
   drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
   $vars['viewer'] = theme('bc_islandora_newspaper_issue', ['object' => $object]);
 }
@@ -238,13 +243,22 @@ function barnard_theme_preprocess_islandora_book_page(&$vars) {
 /**
  * Implements hook_preprocess_islandora_compound_prev_next().
  *
- * @param array $variables
- *   Variables.
+ * This makes the compound navigation block behave in this way:
+ * the first object inside of me will always be the PARENT object.
+ * rationale: because compound_objects are a contentType, not a true archival
+ * object, ever. I simply handle how archival objects get processed.
+ *
+ * Allowing anything to be a "compound object" is NOT ADVISED. It is nice
+ * as an option but is included for capability, most likely.
+ *
+ * We'll use a predictable set of classes for our inclusions as they relate to
+ * the parent and each other.
+ *
+ * @TODO some of the variables we kick back are:
+ * @TODO list vars.
  */
 function barnard_theme_preprocess_islandora_compound_prev_next(array &$variables) {
   // We always create a compound obj and the first object is the parent obj.
-  // This is important if, forexample, we used 'books' as compounds instead of
-  // compound object models (which is an option available).
   $variables['themed_siblings'][0]['class'][] = 'parent';
 
   // This simply parses the label of the object into their matched parts.
