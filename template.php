@@ -369,7 +369,6 @@ function barnard_theme_islandora_manuscriptpagecmodel_islandora_solr_object_resu
  * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
  */
 function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
-  drupal_set_message('recommend Barnard drop: newspaper-page-model-solr-result-alter', 'warning', FALSE);
   // None of this is actually doing anything special... Unless I'm crazy.
   return;
 
@@ -429,7 +428,6 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
  * book on page load.
  */
 function barnard_theme_islandora_bookcmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
-  drupal_set_message('recommend Barnard drop: book-model-solr-result-alter', 'warning', FALSE);
   // None of this is actually doing anything special... Unless I'm crazy.
   return;
 
@@ -479,10 +477,9 @@ function barnard_theme_islandora_bookcmodel_islandora_solr_object_result_alter(&
  * The page is added as a fragment at the end of the book url.
  */
 function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
-  drupal_set_message('Check on RELS_EXT for pagecmodels, and newspapers. isSequenceNumberLiteral is our page truthiness test, but tf?', 'warning', TRUE);
-
   // Grab the names of the appropriate solr fields from the db.
   $parent_book_field_name = variable_get('islandora_book_parent_book_solr_field', 'RELS_EXT_isMemberOf_uri_ms');
+  // @TODO: what is wrong here, as well?  dev is acting odd using the literal.  What.
   //  $page_number_field_name = variable_get('islandora_paged_content_page_number_solr_field', 'RELS_EXT_isSequenceNumber_literal_ms');
   $page_number_field_name = 'RELS_EXT_isSequenceNumber_uri_ms';
 
