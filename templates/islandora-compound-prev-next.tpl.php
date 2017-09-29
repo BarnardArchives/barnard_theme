@@ -32,7 +32,7 @@
 <div class="islandora-compound-prev-next">
      <span class="islandora-compound-title">Inclusions<br/>
        <?php if ($parent_url): ?>
-         <?php print l(t('manage parent object'), $parent_url); ?>
+         <?php print l(t('Manage this Compound Object'), $parent_url); ?>
        <?php endif; ?>
        <?php if ($parent_tn): ?>
          <?php print l(
@@ -50,7 +50,7 @@
   <?php if (count($themed_siblings) > 0): ?>
       <div class="islandora-compound-thumbs">
           <!-- @todo: css, description text, other things at the theme level?-->
-          <span class="islandora-compound-details">Loading inclusions data, please wait...</span>
+          <span class="islandora-compound-details"></span>
         <?php foreach ($themed_siblings as $sibling): ?>
             <div class='islandora-compound-thumb <?php print(implode(" ", $sibling['class'])); ?>'>
                 <span class='islandora-compound-caption'><?php print $sibling['label']; ?></span>
