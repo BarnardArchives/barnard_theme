@@ -369,56 +369,6 @@ function barnard_theme_islandora_manuscriptpagecmodel_islandora_solr_object_resu
  * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
  */
 function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
-  // None of this is actually doing anything special... Unless I'm crazy.
-  return;
-
-  $query = trim($query_processor->solrQuery);
-  if (empty($query)) {
-    unset($search_results['object_url_params']['solr']);
-
-    // Leave function.
-    return;
-  }
-
-  $field_match = [
-    'catch_all_fields_mt',
-    'OCR_t',
-    'text_nodes_HOCR_hlt',
-  ];
-
-  $field_term = '';
-  $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
-  foreach ($fields as $field) {
-    if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
-      if (isset($matches[1]) && in_array($matches[1], $field_match)) {
-        $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
-        break;
-      }
-    }
-  }
-
-  $field_match = [
-    'catch_all_fields_mt',
-    'OCR_t',
-    'text_nodes_HOCR_hlt',
-  ];
-
-  $field_term = '';
-  $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
-  foreach ($fields as $field) {
-    if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
-      if (isset($matches[1]) && in_array($matches[1], $field_match)) {
-        $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
-        break;
-      }
-    }
-  }
-
-  if ($field_term) {
-    $search_term = trim($field_term);
-    $search_results['object_url_params']['solr']['params'] = ['defType' => 'dismax'];
-    $search_results['object_url_params']['solr']['query'] = $search_term;
-  }
 }
 
 /**
@@ -428,46 +378,6 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
  * book on page load.
  */
 function barnard_theme_islandora_bookcmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
-  // None of this is actually doing anything special... Unless I'm crazy.
-  return;
-
-  $view_types = [
-    "1" => "1up",
-    "2" => "2up",
-    "3" => "thumb",
-  ];
-
-  $field_match = [
-    'catch_all_fields_mt',
-    'OCR_t',
-    'text_nodes_HOCR_hlt',
-  ];
-
-  $field_term = '';
-  $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
-  foreach ($fields as $field) {
-    if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
-      if (isset($matches[1]) && in_array($matches[1], $field_match)) {
-        $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
-        break;
-      }
-    }
-  }
-
-  if ($field_term) {
-    $search_term = trim($field_term);
-  }
-  else {
-    if ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
-      $search_term = trim($query_processor->solrQuery);
-    }
-  }
-
-  $ia_view = variable_get('islandora_internet_archive_bookreader_default_page_view', "1");
-  $search_results['object_url_fragment'] = "page/1/mode/{$view_types[$ia_view]}";
-  if (!empty($search_term)) {
-    $search_results['object_url_fragment'] .= "/search/" . rawurlencode($search_term);
-  }
 }
 
 /**
@@ -479,9 +389,12 @@ function barnard_theme_islandora_bookcmodel_islandora_solr_object_result_alter(&
 function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
   // Grab the names of the appropriate solr fields from the db.
   $parent_book_field_name = variable_get('islandora_book_parent_book_solr_field', 'RELS_EXT_isMemberOf_uri_ms');
+  $page_number_field_name = variable_get('islandora_paged_content_page_number_solr_field', 'RELS_EXT_isSequenceNumber_literal_ms');
   // @TODO: what is wrong here, as well?  dev is acting odd using the literal.  What.
-  //  $page_number_field_name = variable_get('islandora_paged_content_page_number_solr_field', 'RELS_EXT_isSequenceNumber_literal_ms');
-  $page_number_field_name = 'RELS_EXT_isSequenceNumber_uri_ms';
+  if (!isset($search_results['solr_doc'][$page_number_field_name])) {
+    // Fall back to ms if you cannot get the page number from literal.
+    $page_number_field_name = 'RELS_EXT_isSequenceNumber_uri_ms';
+  }
 
   // Just changing this up a little because it's annoying to read.
   // return early if key components of the solr result are missing. empty is
@@ -490,7 +403,6 @@ function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&
     drupal_set_message('Received an invalid or broken solr_search_results.', 'warning', FALSE);
     return;
   }
-
 
   // If:
   // the solr doc contains the parent book AND
@@ -503,11 +415,14 @@ function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&
     // Replace the result url with that of the parent book and add the page
     // number as a fragment.
     $book_pid = preg_replace('/info\:fedora\//', '', $search_results['solr_doc'][$parent_book_field_name][0], 1);
+    // waste of cycle (depending on where the page number comes from).
     $page_number = preg_replace('/info\:fedora\//', '', $search_results['solr_doc'][$page_number_field_name][0], 1);
 
     if (islandora_object_access(ISLANDORA_VIEW_OBJECTS, islandora_object_load($book_pid))) {
+      $extra_life = strpos($book_pid, 'BC15') !== FALSE;
+      $mode = $extra_life ? '1up' : '2up';
       $search_results['object_url'] = "islandora/object/$book_pid";
-      $search_results['object_url_fragment'] = "page/$page_number/mode/1up";
+      $search_results['object_url_fragment'] = "page/$page_number/mode/$mode";
 
       // XXX: Won't handle fielded searches nicely... then again, if our
       // highlighting field is not the one being search on, this makes sense?
