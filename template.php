@@ -144,7 +144,7 @@ function barnard_theme_preprocess_page(&$vars) {
   if (module_exists('bc_islandora') && $vars['is_front']) {
     module_load_include('inc', 'bc_islandora', 'includes/theme');
     $vars['page']['footer']['front_caption'] = [
-      '#markup' => _bc_islandora_featured(),
+      '#markup' => _barnard_islandora_featured(),
       '#prefix' => '<div id="block-views-featured-block">',
       '#suffix' => '</div>',
     ];
@@ -162,9 +162,9 @@ function barnard_theme_preprocess_page(&$vars) {
   }
 
   // If we have service_links, set $vars['socialmedia'].
-//  if (module_exists('service_links') && _service_links_match_path()) {
-//    $vars['socialmedia'] = implode('', service_links_render(NULL));
-//  }
+  //  if (module_exists('service_links') && _service_links_match_path()) {
+  //    $vars['socialmedia'] = implode('', service_links_render(NULL));
+  //  }
 
   // If this is an islandora object, add permalink js.
   if (arg(0) == 'islandora' && arg(1) == 'object') {
@@ -204,6 +204,7 @@ function barnard_theme_preprocess_islandora_basic_collection_wrapper(&$vars) {
  * Implements hook_preprocess_islandora_book_book().
  */
 function barnard_theme_preprocess_islandora_book_book(&$vars) {
+  // Barnard Core Module.
   if (!module_exists('bc_islandora')) {
     return;
   }
@@ -220,7 +221,7 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
   $object = $vars['object'];
   module_load_include('inc', 'bc_islandora', 'includes/theme');
   // Provide a link to this object's PDF datastream via $vars['dl_links'].
-  $vars['dl_links'] = _bc_islandora_dl_links($object, ['PDF']);
+  $vars['dl_links'] = _barnard_islandora_dl_links($object, ['PDF']);
 
   drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
   $vars['viewer'] = theme('bc_islandora_newspaper_issue', ['object' => $object]);
@@ -230,6 +231,7 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
  * Implements hook_preprocess_islandora_book_page().
  */
 function barnard_theme_preprocess_islandora_book_page(&$vars) {
+  // Barnard Core Module.
   if (!module_exists('bc_islandora')) {
     return;
   }
@@ -237,7 +239,7 @@ function barnard_theme_preprocess_islandora_book_page(&$vars) {
   $object = $vars['object'];
   module_load_include('inc', 'bc_islandora', 'includes/theme');
   // Provide a link to this object's JPG datastream via $vars['dl_links'].
-  $vars['dl_links'] = _bc_islandora_dl_links($object, ['JPG']);
+  $vars['dl_links'] = _barnard_islandora_dl_links($object, ['JPG']);
 }
 
 /**
@@ -285,11 +287,13 @@ function barnard_theme_preprocess_islandora_compound_prev_next(array &$variables
  * Implements hook_preprocess_islandora_large_image().
  */
 function barnard_theme_preprocess_islandora_large_image(&$vars) {
-  if (module_exists('bc_islandora')) {
-    module_load_include('inc', 'bc_islandora', 'includes/theme');
-    // Provide a link to this object's JPG datastream via $vars['dl_links'].
-    $vars['dl_links'] = _bc_islandora_dl_links($vars['islandora_object'], ['JPG']);
+  // Barnard Core Module.
+  if (!module_exists('bc_islandora')) {
+    return;
   }
+  module_load_include('inc', 'bc_islandora', 'includes/theme');
+  // Provide a link to this object's JPG datastream via $vars['dl_links'].
+  $vars['dl_links'] = _barnard_islandora_dl_links($vars['islandora_object'], ['JPG']);
 }
 
 /**
@@ -324,17 +328,18 @@ function barnard_theme_preprocess_islandora_manuscript_manuscript(&$vars) {
       }
     }
   }
-
   if (!empty($pages_ocr)) {
     $vars['ms_transcript'] = $pages_ocr;
   }
 
-  if (module_exists('bc_islandora')) {
-    module_load_include('inc', 'bc_islandora', 'includes/theme');
-    $vars['dl_links'] = _bc_islandora_dl_links($object, ['PDF', 'TRANSCRIPT']);
-    if (count(islandora_paged_content_get_pages($object)) > 1) {
-      $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
-    }
+  // Barnard Core Module.
+  if (!module_exists('bc_islandora')) {
+    return;
+  }
+  module_load_include('inc', 'bc_islandora', 'includes/theme');
+  $vars['dl_links'] = _barnard_islandora_dl_links($object, ['PDF', 'TRANSCRIPT']);
+  if (count(islandora_paged_content_get_pages($object)) > 1) {
+    $vars['ms_pager'] = _barnard_islandora_np_page_pager($object);
   }
 }
 
@@ -348,10 +353,52 @@ function barnard_theme_preprocess_islandora_manuscript_page(&$vars) {
     $vars['ms_transcript'] = $object['OCR']->getContent(NULL);
     drupal_add_js(drupal_get_path('theme', 'barnard_theme') . '/js/manuscript.js');
   }
-  if (module_exists('bc_islandora')) {
-    module_load_include('inc', 'bc_islandora', 'includes/theme');
-    $vars['dl_links'] = _bc_islandora_dl_links($object, ['TRANSCRIPT']);
-    $vars['ms_pager'] = _bc_islandora_np_page_pager($object);
+
+  // Barnard Core Module.
+  if (!module_exists('bc_islandora')) {
+    return;
+  }
+  module_load_include('inc', 'bc_islandora', 'includes/theme');
+  $vars['dl_links'] = _barnard_islandora_dl_links($object, ['TRANSCRIPT']);
+  $vars['ms_pager'] = _barnard_islandora_np_page_pager($object);
+}
+
+/**
+ * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
+ *
+ * Replaces the url for the search result to be the book's url, not the page.
+ * The page is added as a fragment at the end of the book url.
+ */
+function barnard_theme_islandora_compoundcmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+  $parent_book_field_name = variable_get('islandora_book_parent_book_solr_field', 'RELS_EXT_isMemberOf_uri_ms');
+
+  $book_pid = preg_replace('/info\:fedora\//', '', $search_results['solr_doc'][$parent_book_field_name][0], 1);
+
+  $field_match = [
+    'catch_all_fields_mt',
+    'OCR_t',
+    'text_nodes_HOCR_hlt',
+  ];
+  $field_term = '';
+  $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
+  foreach ($fields as $field) {
+    if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
+      if (isset($matches[1]) && in_array($matches[1], $field_match)) {
+        $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
+        break;
+      }
+    }
+  }
+  if ($field_term) {
+    $search_term = trim($field_term);
+  }
+  elseif ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
+    $search_term = trim($query_processor->solrQuery);
+  }
+  $mode = _barnard_theme_breadcrumb_view_exceptions($book_pid) ? '1up' : '2up';
+  $search_results['object_url_fragment'] = "page/1/mode/$mode";
+  if (!empty($search_term)) {
+    $search_results['object_url_fragment'] .= "/search/" . rawurlencode($search_term);
   }
 }
 
@@ -369,6 +416,38 @@ function barnard_theme_islandora_manuscriptpagecmodel_islandora_solr_object_resu
  * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
  */
 function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+  $field_match = [
+    'catch_all_fields_mt',
+    'OCR_t',
+    'text_nodes_HOCR_hlt',
+  ];
+  $field_term = '';
+  $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
+  foreach ($fields as $field) {
+    if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
+      if (isset($matches[1]) && in_array($matches[1], $field_match)) {
+        $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
+        break;
+      }
+    }
+  }
+  if ($field_term) {
+    $search_term = trim($field_term);
+    $search_results['object_url_params']['solr'] = [
+      'query' => $search_term,
+      'params' => ['defType' => 'dismax'],
+    ];
+  }
+}
+
+/**
+ * Implements hook_CMODEL_PID_islandora_solr_object_result_alter().
+ */
+function barnard_theme_islandora_sp_large_image_cmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+  $search_results['object_url_params']['solr'] = [
+    'query' => $query_processor->solrQuery,
+    'params' => $query_processor->solrParams,
+  ];
 }
 
 /**
@@ -378,6 +457,38 @@ function barnard_theme_islandora_newspaperpagecmodel_islandora_solr_object_resul
  * book on page load.
  */
 function barnard_theme_islandora_bookcmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+  $parent_book_field_name = variable_get('islandora_book_parent_book_solr_field', 'RELS_EXT_isMemberOf_uri_ms');
+
+  // @TODO : checking.
+
+  $book_pid = preg_replace('/info\:fedora\//', '', $search_results['solr_doc'][$parent_book_field_name][0], 1);
+
+  $field_match = [
+    'catch_all_fields_mt',
+    'OCR_t',
+    'text_nodes_HOCR_hlt',
+  ];
+  $field_term = '';
+  $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
+  foreach ($fields as $field) {
+    if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
+      if (isset($matches[1]) && in_array($matches[1], $field_match)) {
+        $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
+        break;
+      }
+    }
+  }
+  if ($field_term) {
+    $search_term = trim($field_term);
+  }
+  elseif ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
+    $search_term = trim($query_processor->solrQuery);
+  }
+  $mode = _barnard_theme_breadcrumb_view_exceptions($book_pid) ? '1up' : '2up';
+  $search_results['object_url_fragment'] = "page/1/mode/$mode";
+  if (!empty($search_term)) {
+    $search_results['object_url_fragment'] .= "/search/" . rawurlencode($search_term);
+  }
 }
 
 /**
@@ -387,7 +498,6 @@ function barnard_theme_islandora_bookcmodel_islandora_solr_object_result_alter(&
  * The page is added as a fragment at the end of the book url.
  */
 function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
-  // Grab the names of the appropriate solr fields from the db.
   $parent_book_field_name = variable_get('islandora_book_parent_book_solr_field', 'RELS_EXT_isMemberOf_uri_ms');
   $page_number_field_name = variable_get('islandora_paged_content_page_number_solr_field', 'RELS_EXT_isSequenceNumber_literal_ms');
   // @TODO: what is wrong here, as well?  dev is acting odd using the literal.  What.
@@ -415,22 +525,52 @@ function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&
     // Replace the result url with that of the parent book and add the page
     // number as a fragment.
     $book_pid = preg_replace('/info\:fedora\//', '', $search_results['solr_doc'][$parent_book_field_name][0], 1);
-    // waste of cycle (depending on where the page number comes from).
+    // Waste of time (depending on where the page number comes from).
     $page_number = preg_replace('/info\:fedora\//', '', $search_results['solr_doc'][$page_number_field_name][0], 1);
 
     if (islandora_object_access(ISLANDORA_VIEW_OBJECTS, islandora_object_load($book_pid))) {
-      $extra_life = strpos($book_pid, 'BC15') !== FALSE;
-      $mode = $extra_life ? '1up' : '2up';
       $search_results['object_url'] = "islandora/object/$book_pid";
+      $mode = _barnard_theme_breadcrumb_view_exceptions($book_pid) ? '1up' : '2up';
       $search_results['object_url_fragment'] = "page/$page_number/mode/$mode";
-
-      // XXX: Won't handle fielded searches nicely... then again, if our
-      // highlighting field is not the one being search on, this makes sense?
-      if ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
-        $search_results['object_url_fragment'] .= "/search/" . rawurlencode($query_processor->solrQuery);
+      $field_match = [
+        'catch_all_fields_mt',
+        'OCR_t',
+        'text_nodes_HOCR_hlt',
+      ];
+      $field_term = '';
+      $fields = preg_split('/OR|AND|NOT/', $query_processor->solrQuery);
+      foreach ($fields as $field) {
+        if (preg_match('/^(.*):\((.*)\)/', $field, $matches)) {
+          if (isset($matches[1]) && in_array($matches[1], $field_match)) {
+            $field_term = ((isset($matches[2]) && $matches[2]) ? $matches[2] : '');
+            break;
+          }
+        }
+      }
+      if ($field_term) {
+        $search_term = trim($field_term);
+      }
+      elseif ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
+        $search_term = trim($query_processor->solrQuery);
+      }
+      if (!empty($search_term)) {
+        $search_results['object_url_fragment'] .= "/search/" . rawurlencode($search_term);
       }
     }
   }
+}
+
+/**
+ * Exception.
+ *
+ * @param string $pid
+ *   Dog.
+ *
+ * @return bool
+ *   Cat.
+ */
+function _barnard_theme_breadcrumb_view_exceptions($pid) {
+  return strpos($pid, 'BC15') !== FALSE;
 }
 
 /**
@@ -439,7 +579,38 @@ function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&
  * Replaces the url for the search result to be the book's url, not the page.
  * The page is added as a fragment at the end of the book url.
  */
-function barnard_theme_islandora_compoundCModel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
-  // I probably don't need you, but you're here as a security blanket.
-  // Thank you.
-}
+//function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
+//  // Grab the names of the appropriate solr fields from the db.
+//  $parent_book_field_name = variable_get('islandora_book_parent_book_solr_field', 'RELS_EXT_isMemberOf_uri_ms');
+//  $page_number_field_name = variable_get('islandora_paged_content_page_number_solr_field', 'RELS_EXT_isSequenceNumber_literal_ms');
+//  // @TODO: what is wrong here, as well?  dev is acting odd using the literal.  What.
+//  if (!isset($search_results['solr_doc'][$page_number_field_name])) {
+//    // Fall back to ms if you cannot get the page number from literal.
+//    $page_number_field_name = 'RELS_EXT_isSequenceNumber_uri_ms';
+//  }
+//  if (isset($search_results['solr_doc'][$parent_book_field_name]) &&
+//    count($search_results['solr_doc'][$parent_book_field_name]) &&
+//    isset($search_results['solr_doc'][$page_number_field_name]) &&
+//    count($search_results['solr_doc'][$page_number_field_name])) {
+//
+//    // Replace the result url with that of the parent book and add the page
+//    // number as a fragment.
+//    $book_pid = preg_replace('/info\:fedora\//', '', $search_results['solr_doc'][$parent_book_field_name][0], 1);
+//    // Waste of time (depending on where the page number comes from).
+//    $page_number = preg_replace('/info\:fedora\//', '', $search_results['solr_doc'][$page_number_field_name][0], 1);
+//    $search_term = trim($query_processor->solrQuery);
+//  @TODO COME BACK HERE!
+//    if (islandora_object_access(ISLANDORA_VIEW_OBJECTS, islandora_object_load($book_pid))) {
+//      $extra_life = strpos($book_pid, 'BC15') !== FALSE;
+//      $mode = $extra_life ? '1up' : '2up';
+//      $search_results['object_url'] = "islandora/object/$book_pid";
+//      $search_results['object_url_fragment'] = "page/$page_number/mode/$mode";
+//
+//      // XXX: Won't handle fielded searches nicely... then again, if our
+//      // highlighting field is not the one being search on, this makes sense?
+//      if ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
+//        $search_results['object_url_fragment'] .= "/search/" . rawurlencode($query_processor->solrQuery);
+//      }
+//    }
+//  }
+//}
