@@ -32,7 +32,7 @@
 <div class="islandora-compound-prev-next">
      <span class="islandora-compound-title">Inclusions<br/>
        <?php if ($parent_url): ?>
-         <?php print l(t('Manage this Compound Object'), $parent_url); ?>
+           <span class="islandora-compound-manage"><?php print l(t('Manage Compound'), $parent_url); ?></span>
        <?php endif; ?>
        <?php if ($parent_tn): ?>
          <?php print l(
@@ -49,16 +49,10 @@
  </span><br/>
   <?php if (count($themed_siblings) > 0): ?>
       <div class="islandora-compound-thumbs">
-          <!-- @todo: css, description text, other things at the theme level?-->
-          <span class="islandora-compound-details"></span>
+          <div class="islandora-compound-details"></div>
         <?php foreach ($themed_siblings as $sibling): ?>
             <div class='islandora-compound-thumb <?php print(implode(" ", $sibling['class'])); ?>'>
-                <span class='islandora-compound-caption'><?php print $sibling['label']; ?></span>
               <?php
-              // This is relatively Barnard specific because we really want this
-              // collection to ALWAYS be 1up. @jerk br2490 github.
-              // @todo make this an option. pass in. be smart.
-              $fragment = (isset($sibling['return_page'])) ? "page/${sibling['return_page']}/mode/1up" : 'page/1/mode/1up';
               print l(
                 theme_image(
                   [
@@ -67,8 +61,9 @@
                   ]
                 ),
                 'islandora/object/' . $sibling['pid'],
-                ['html' => TRUE, 'fragment' => $fragment]
+                ['html' => TRUE]
               ); ?>
+                <span class='islandora-compound-caption'><?php print $sibling['label']; ?></span>
             </div>
         <?php endforeach; // each themed_siblings ?>
       </div> <!-- // islandora-compound-thumbs -->
