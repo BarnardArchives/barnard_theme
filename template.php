@@ -259,7 +259,7 @@ function barnard_theme_islandora_compoundcmodel_islandora_solr_object_result_alt
   elseif ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
     $search_term = trim($query_processor->solrQuery);
   }
-  $mode = _barnard_theme_breadcrumb_view_exceptions($book_pid) ? '1up' : '2up';
+  $mode = _barnard_theme_breadcrumb_view_exceptions($book_pid);
   $search_results['object_url_fragment'] = "page/1/mode/$mode";
   if (!empty($search_term)) {
     $search_results['object_url_fragment'] .= "/search/" . rawurlencode($search_term);
@@ -348,7 +348,7 @@ function barnard_theme_islandora_bookcmodel_islandora_solr_object_result_alter(&
   elseif ($query_processor->solrDefType == 'dismax' || $query_processor->solrDefType == 'edismax') {
     $search_term = trim($query_processor->solrQuery);
   }
-  $mode = _barnard_theme_breadcrumb_view_exceptions($book_pid) ? '1up' : '2up';
+  $mode = _barnard_theme_breadcrumb_view_exceptions($book_pid);
   $search_results['object_url_fragment'] = "page/1/mode/$mode";
   if (!empty($search_term)) {
     $search_results['object_url_fragment'] .= "/search/" . rawurlencode($search_term);
@@ -369,6 +369,8 @@ function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&
     // Fall back to ms if you cannot get the page number from literal.
     $page_number_field_name = 'RELS_EXT_isSequenceNumber_uri_ms';
   }
+  dpm($search_results);
+  dpm($query_processor);
 
   // Just changing this up a little because it's annoying to read.
   // return early if key components of the solr result are missing. empty is
@@ -394,7 +396,7 @@ function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&
 
     if (islandora_object_access(ISLANDORA_VIEW_OBJECTS, islandora_object_load($book_pid))) {
       $search_results['object_url'] = "islandora/object/$book_pid";
-      $mode = _barnard_theme_breadcrumb_view_exceptions($book_pid) ? '1up' : '2up';
+      $mode = _barnard_theme_breadcrumb_view_exceptions($book_pid);
       $search_results['object_url_fragment'] = "page/$page_number/mode/$mode";
       $field_match = [
         'catch_all_fields_mt',
@@ -428,13 +430,22 @@ function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&
  * Exception.
  *
  * @param string $pid
- *   Dog.
+ *   something to compare.
  *
- * @return bool
- *   Cat.
+ * @return string mode
+ *   IAB mode.
  */
 function _barnard_theme_breadcrumb_view_exceptions($pid) {
-  return strpos($pid, 'BC15') !== FALSE;
+  if (strpos($pid, 'BC15-02') !== FALSE) {
+    return 'thumb';
+  }
+
+  if (strpos($pid, 'BC15') !== FALSE) {
+    return '1up';
+  }
+
+  // The norm.  @todo vget.
+  return '2up';
 }
 
 /**

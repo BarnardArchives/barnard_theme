@@ -30,26 +30,27 @@
  */
 ?>
 <div class="islandora-compound-prev-next">
-     <span class="islandora-compound-title">Inclusions<br/>
-       <?php if ($parent_url): ?>
-           <span class="islandora-compound-manage"><?php print l(t('Manage Compound'), $parent_url); ?></span>
-       <?php endif; ?>
-       <?php if ($parent_tn): ?>
-         <?php print l(
-           theme_image(
-             [
-               'path' => $parent_tn,
-               'attributes' => [],
-             ]
-           ),
-           'islandora/object/' . $parent_pid,
-           ['html' => TRUE]
-         ); ?>
-       <?php endif; ?>
- </span><br/>
+    <span class="islandora-compound-title">Inclusions</span>
+  <?php if ($parent_url): ?>
+      <br><span
+              class="islandora-compound-manage"><?php print l(t('Manage Compound'), $parent_url); ?></span>
+  <?php endif; ?>
+    <div class="islandora-compound-details">
+      <?php if ($parent_tn): ?>
+        <?php print l(
+          theme_image(
+            [
+              'path' => $parent_tn,
+              'attributes' => [],
+            ]
+          ),
+          'islandora/object/' . $parent_pid,
+          ['html' => TRUE]
+        ); ?>
+      <?php endif; ?>
+    </div>
   <?php if (count($themed_siblings) > 0): ?>
       <div class="islandora-compound-thumbs">
-          <div class="islandora-compound-details"></div>
         <?php foreach ($themed_siblings as $sibling): ?>
             <div class='islandora-compound-thumb <?php print(implode(" ", $sibling['class'])); ?>'>
               <?php
