@@ -322,9 +322,6 @@ function barnard_theme_islandora_sp_large_image_cmodel_islandora_solr_object_res
  */
 function barnard_theme_islandora_bookcmodel_islandora_solr_object_result_alter(&$search_results, $query_processor) {
   $parent_book_field_name = variable_get('islandora_book_parent_book_solr_field', 'RELS_EXT_isMemberOf_uri_ms');
-
-  // @TODO : checking.
-
   $book_pid = preg_replace('/info\:fedora\//', '', $search_results['solr_doc'][$parent_book_field_name][0], 1);
 
   $field_match = [
@@ -369,12 +366,7 @@ function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&
     // Fall back to ms if you cannot get the page number from literal.
     $page_number_field_name = 'RELS_EXT_isSequenceNumber_uri_ms';
   }
-  dpm($search_results);
-  dpm($query_processor);
 
-  // Just changing this up a little because it's annoying to read.
-  // return early if key components of the solr result are missing. empty is
-  // a nice truthiness test...
   if (empty($search_results['object_url']) || empty($search_results['solr_doc'])) {
     drupal_set_message('Received an invalid or broken solr_search_results.', 'warning', FALSE);
     return;
