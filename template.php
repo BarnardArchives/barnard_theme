@@ -435,7 +435,7 @@ function _barnard_theme_breadcrumb_view_exceptions($pid) {
   if (in_array($pid, $thumbs) || in_array($ns, $thumbs)) {
     return 'thumb';
   }
-  elseif (strpos($ns, 'BC15-02') || in_array($pid, $one_ups) || in_array($ns, $one_ups)) {
+  elseif (strpos($ns, 'BC15-02') !== FALSE || in_array($pid, $one_ups) || in_array($ns, $one_ups)) {
     return '1up';
   }
 
