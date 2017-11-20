@@ -88,7 +88,7 @@ function barnard_theme_preprocess_islandora_book_book(&$vars) {
   $vars['dl_links'] = _barnard_islandora_dl_links($object, ['PDF']);
 
   drupal_add_js(libraries_get_path('openseadragon') . '/openseadragon.js');
-  $vars['viewer'] = theme('bc_islandora_newspaper_issue', ['object' => $object]);
+  $vars['viewer'] = theme('bc_islandora_newspaper_issue_navigator', ['object' => $object]);
 }
 
 /**
@@ -428,15 +428,17 @@ function barnard_theme_islandora_pagecmodel_islandora_solr_object_result_alter(&
  *   IAB mode.
  */
 function _barnard_theme_breadcrumb_view_exceptions($pid) {
-  if (strpos($pid, 'BC15-02') !== FALSE) {
+  $thumbs = explode(', ', variable_get('bc_islandora_bookreader_initial_thumbs'));
+  $one_ups = explode(', ', variable_get('bc_islandora_bookreader_initial_1up'));
+  $ns = islandora_get_namespace($pid);
+
+  if (in_array($pid, $thumbs) || in_array($ns, $thumbs)) {
     return 'thumb';
   }
-
-  if (strpos($pid, 'BC15') !== FALSE) {
+  elseif (in_array($pid, $one_ups) || in_array($ns, $one_ups)) {
     return '1up';
   }
 
-  // The norm.  @todo vget.
   return '2up';
 }
 
