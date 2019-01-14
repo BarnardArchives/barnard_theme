@@ -107,47 +107,6 @@ function barnard_theme_preprocess_islandora_book_page(&$vars) {
 }
 
 /**
- * Implements hook_preprocess_islandora_compound_prev_next().
- *
- * This makes the compound navigation block behave in this way:
- * the first object inside of me will always be the PARENT object.
- * rationale: because compound_objects are a contentType, not a true archival
- * object, ever. I simply handle how archival objects get processed.
- *
- * Allowing anything to be a "compound object" is NOT ADVISED. It is nice
- * as an option but is included for capability, most likely.
- *
- * We'll use a predictable set of classes for our inclusions as they relate to
- * the parent and each other.
- *
- * @TODO some of the variables we kick back are:
- * @TODO list vars.
- */
-function barnard_theme_preprocess_islandora_compound_prev_next(array &$variables) {
-  // We always create a compound obj and the first object is the parent obj.
-  $variables['themed_siblings'][0]['class'][] = 'parent';
-
-  // This simply parses the label of the object into their matched parts.
-  foreach ($variables['themed_siblings'] as $key => &$vars) {
-    if (preg_match("/(page.(\d{1,3})).*(inclusion.(\d{1,3}))/i", $vars['label'], $matches)) {
-      $classes = [
-        'inclusion-object',
-        "inclusion-page-{$matches[2]}",
-        "inclusion_page-{$matches[2]}-sequence-{$matches[4]}",
-      ];
-      $vars['class'] = array_merge($vars['class'], $classes);
-      $vars['label'] = ucfirst($matches[0]);
-      $vars['inclusion_page'] = $matches[2];
-    }
-
-    if ($variables['sequence'] > 1 && isset($vars['class'][0]) && $vars['class'][0] === 'active') {
-      $variables['current_inclusion'] = $vars['inclusion_page'];
-      $variables['themed_siblings'][0]['return_page'] = $vars['inclusion_page'];
-    }
-  }
-}
-
-/**
  * Implements hook_preprocess_islandora_large_image().
  */
 function barnard_theme_preprocess_islandora_large_image(&$vars) {
